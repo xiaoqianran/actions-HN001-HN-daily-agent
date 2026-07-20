@@ -1,85 +1,90 @@
 {
   "date": "2026-07-20",
-  "generated_at": "2026-07-20T11:38:05.329669+00:00",
-  "hn_count": 14,
+  "generated_at": "2026-07-20T22:47:51.662558+00:00",
+  "hn_count": 15,
   "gh_count": 20,
   "hn_articles": [
     {
-      "title": "Exploit brokers pay $500k for WordPress RCEs. I found one with GPT5.6 and $25",
-      "url": "https://slcyber.io/research-center/exploit-brokers-pay-500000-for-a-wordpress-rce-i-found-one-with-gpt5-6/",
-      "summary": "核心 研究者用GPT5.6仅花25美元发现WordPress高危RCE漏洞，市场价50万美元。\n要点 使用GPT5.6 Sol Ultra定制多代理提示词分析源码；小时发现预认证RCE漏洞链；公开wp2shell工具供自查。\n亮点 AI以极低成本发现价值50万美元的零日漏洞，展示安全研究新范式。\n适合 安全研究员；AI开发者"
+      "title": "China’s open-weights AI strategy is winning",
+      "url": "https://werd.io/american-ai-is-locked-down-and-proprietary-its-losing/",
+      "summary": "核心 中国开放权重AI策略通过生态优势击败美国封闭模式。\n要点 AI模型本身易切换，护城河在于企业服务集成；开放权重策略将美国算力劣势转为分发与生态优势；中美模型性能差距缩小，中国模型已被多数初创公司采用\n亮点 80%初创公司采用中国模型，生态优势已显\n适合 AI产品及战略从业者"
     },
     {
-      "title": "Moonshine: Lets you stream games from your PC to any device running Moonlight",
-      "url": "https://github.com/hgaiser/moonshine",
-      "summary": "核心 无法抓取正文，请直接点击链接查看。\n要点 无；无；无\n亮点 无\n适合 通用"
+      "title": "Kimi Work",
+      "url": "https://www.kimi.com/products/kimi-work",
+      "summary": "核心 桌面AI智能体，实现本地文件操作与网页自动化\n要点 自动化任务调度；自主网页浏览与数据提取；多智能体协同处理复杂任务\n亮点 无需复杂API设置，直接对话获取金融市场数据\n适合 金融从业者与办公自动化用户"
     },
     {
-      "title": "Airbus Takes Flight from AWS",
-      "url": "https://www.theregister.com/columnists/2026/07/20/airbus-takes-flight-from-aws-what-happens-next-is-critical/5274109",
-      "summary": "核心 空客为数字主权将900应用迁至欧洲云服务\n要点 迁移900应用，70个关键系统优先；ERP/CRM/制造系统纳入主权云；供应链与AI面临微软依赖与自主挑战\n亮点 通过公开招标推动欧洲云服务市场形成\n适合 云架构师与数字主权研究者"
+      "title": "Jelly UI: Soft-body physics for native HTML form controls",
+      "url": "https://jelly-ui.com/",
+      "summary": "核心 Jelly UI是无依赖Web Components库，为原生HTML表单控件引入软体物理效果。\n要点 零依赖单脚本集成；内置WCAG AA无障碍、暗黑模式与RTL支持；个软体物理表单组件。\n亮点 软体物理模拟显著提升用户交互的触觉与视觉反馈。\n适合 前端开发者"
     },
     {
-      "title": "LoRA Speedrun – a public wall-clock leaderboard for fine-tuning techniques",
-      "url": "https://github.com/Saivineeth147/lora-speedrun",
-      "summary": "核心 无法抓取正文，请直接点击链接查看。\n要点 无；无；无\n亮点 无\n适合 通用"
+      "title": "Human mathematicians are being outcounterexampled",
+      "url": "https://xenaproject.wordpress.com/2026/07/20/human-mathematicians-are-being-outcounterexampled/",
+      "summary": "核心 AI自动形式化证明Erdős猜想反例，生成超百万行Lean代码\n要点 ChatGPT提出反例；Logical Intelligence快速形式化；OpenAI Sol生成本包含类域论证明\n亮点 AI三周生成1.2百万行代码，包含全球类域论证明\n适合 AI研究者；形式化验证工程师"
     },
     {
-      "title": "Eliminating Go bounds checks with unsafe",
-      "url": "https://blog.andr2i.com/posts/2026-07-06-eliminating-go-bound-checks-with-unsafe",
-      "summary": "核心 使用unsafe指针算术消除Go边界检查，优化热路径性能。\n要点 边界检查消除减少指令分支，提升缓存效率；调整循环条件助编译器自动消除；unsafe指针算术手动消除无法处理的检查。\n亮点 unsafe技巧可消除编译器无法自动处理的边界检查，实现更深优化。\n适合 Go后端工程师"
+      "title": "Hacker wipes Romania's land registry database",
+      "url": "https://news.risky.biz/risky-bulletin-hacker-wipes-romanias-entire-land-registry-database/",
+      "summary": "核心 黑客入侵并清空罗马尼亚全国土地登记数据库，致房地产市场停摆。\n要点 黑客使用有效凭证入侵并删除系统及备份；官方应用网站离线一周，交易与产权证明无法办理；机构宣布从零重建网络，疑似有离线备份。\n亮点 黑客身份被安全公司公开，为罗马尼亚执法提供便利。\n适合 安全工程师与研究人员"
     },
     {
-      "title": "Claude Code uses Bun written in Rust now",
-      "url": "https://simonwillison.net/2026/Jul/19/claude-code-in-bun-in-rust/",
-      "summary": "核心 Claude Code已采用Rust重写的Bun在生产环境运行。\n要点 v2.1.181版本后切换至Rust版Bun；通过strings命令及预加载脚本可验证；使用未正式发布的Bun v1.4.0 canary版本。\n亮点 Rust版Bun已大规模生产验证，Linux冷启动提升10%。\n适合 后端与AI工程师"
+      "title": "My falling-out with the rationalist community",
+      "url": "https://lcamtuf.substack.com/p/my-falling-out-with-the-rationalist",
+      "summary": "核心 作者反思与理性主义社区决裂，揭示其表面理性下的偏见与风险\n要点 社区源于怀疑论运动但易受确认偏误影响；有效利他主义被用于事后合理化不道德选择；理性主义者选择性辩论回避敏感议题\n亮点 理性主义标榜理性，实则常为个人偏好辩护\n适合 科技文化爱好者"
     },
     {
-      "title": "Self-Powered Trailers Promise Leaner Freight Runs",
-      "url": "https://spectrum.ieee.org/self-powered-trailers-freight-decarbonization",
-      "summary": "核心 自驱动拖车通过电动化技术推动长途货运脱碳与运营精简。\n要点 研发电动半挂车以减少传统卡车依赖；提升长途货运能源效率；降低碳排放与运营成本。\n亮点 货运脱碳的关键技术路径之一。\n适合 交通物流/环保工程师"
+      "title": "Nativ: Run frontier open models locally on your Mac",
+      "url": "https://blaizzy.github.io/nativ/",
+      "summary": "核心 Mac本地运行开源AI模型的桌面应用。\n要点 curated library智能推荐适配模型；Apple Silicon深度优化无中间层；完全免费开源无账户订阅。\n亮点 完全开源且MIT许可，无账户订阅或数据收集。\n适合 Mac开发者与AI研究者"
     },
     {
-      "title": "Orion Browser by Kagi",
-      "url": "https://orionbrowser.com/",
-      "summary": "核心 基于WebKit的隐私优先浏览器，支持多平台扩展。\n要点 零遥测与内置广告拦截；兼容Safari/Chrome/Firefox扩展；覆盖macOS/iOS/Linux平台。\n亮点 唯一同时支持三大浏览器扩展的WebKit内核浏览器。\n适合 隐私关注者/开发者/多平台用户"
+      "title": "Airport Simulator",
+      "url": "https://airport.apunen.com/",
+      "summary": "核心 机场模拟器实时展示降落、起飞及航班节奏数据。\n要点 实时显示降落航班数；实时显示起飞航班数；展示每分钟航班节奏和飞行时间。\n亮点 无\n适合 前端开发者"
     },
     {
-      "title": "What I learned selling 2,500 MIDI recorders: Hardware is not so hard",
-      "url": "https://chipweinberger.com/articles/20260719-hardware-is-not-so-hard",
-      "summary": "核心 硬件创业难度被高估，产品简化与合理规模是关键。\n要点 硬件实际难度低于预期，远低于软件复杂度；产品设计极度简化，仅25个通用件；实践建议聚焦供应链与成本控制。\n亮点 软件复杂度远超硬件，20万行代码耗时三年。\n适合 硬件产品经理与创业者"
+      "title": "Agent swarms and the new model economics",
+      "url": "https://cursor.com/blog/agent-swarm-model-economics",
+      "summary": "核心 智能体群通过规划与执行分工，显著提升复杂软件构建效率并优化模型成本。\n要点 新旧智能体群对比，新架构在相同条件下性能更优；规划者分解任务树，执行者实施，形成灵活拓扑；上下文效率提升是关键，避免单智能体信息过载。\n亮点 混合模型配置（高级规划+廉价执行）在保持质量前提下极大降低成本。\n适合 AI/ML工程师与架构师"
     },
     {
-      "title": "Xiaomi-Robotics-1",
-      "url": "https://robotics.xiaomi.com/xiaomi-robotics-1.html",
-      "summary": "核心 通过无实体预训练与后训练，实现机器人策略模型规模化扩展。\n要点 预训练使用10万小时无实体数据；后训练对齐真实机器人与指令；扩展行为可预测且未饱和。\n亮点 真实机器人成功率随预训练数据与模型规模持续提升。\n适合 AI与机器人技术开发者"
+      "title": "The Power of Awareness: Overcoming Surveillance Capitalism",
+      "url": "https://www.scottrlarson.com/presentations/overcoming-surveillance-capitalism-with-awareness/",
+      "summary": "核心 监控资本主义非必然，需公民觉醒与持续行动以克服。\n要点 大科技公司构建预测画像并出售以影响行为；该模式未经公众知情同意重塑社会；通过意识觉醒与公民参与可逆转此趋势。\n亮点 微调思维方式是应对监控资本主义的关键。\n适合 科技与社会交叉领域读者"
     },
     {
-      "title": "Minecraft: Java Edition now uses SDL3",
-      "url": "https://www.minecraft.net/en-us/article/minecraft-26-3-snapshot-4",
-      "summary": "核心 Minecraft Java版底层库从GLFW切换至SDL3。\n要点 采用SDL3管理窗口与输入；数据包版本111.0，战利品表支持注册引用；UI调整：物理键位、默认无边框全屏。\n亮点 采用SDL3实现更统一的跨平台输入与窗口管理。\n适合 游戏开发者与模组制作者。"
+      "title": "The creepiest 'sales demo' of all time",
+      "url": "https://www.appenmedia.com/opinion/letter-to-the-editor-the-creepiest-sales-demo-of-all-time/article_a8f0cc6c-29d3-41f7-8668-8a855f760efb.html",
+      "summary": "核心 读者来信痛批某销售演示过度侵入，践踏隐私边界\n要点 演示方未经同意深度挖掘客户数据；将隐私侵犯包装成个性化服务；引发业界对销售伦理的反思\n亮点 揭示“个性化”营销可能异化为监控\n适合 营销/产品/隐私关注者"
     },
     {
-      "title": "Sealed tomb filled with paintings and inscriptions discovered in Egypt",
-      "url": "https://www.labrujulaverde.com/en/2026/07/sealed-tomb-of-a-high-official-or-priest-filled-with-paintings-and-inscriptions-discovered-on-luxors-west-bank/",
-      "summary": "核心 埃及卢克索西岸发现密封墓穴，属新王国官员Paser，内有绘画铭文。\n要点 荷兰队在谢赫阿卜杜勒库尔纳地区发现；墓穴所有者Paser，铭文证实身份；建筑倒T形布局，年代属拉美西斯时期。\n亮点 密封墓穴保存完好，为古埃及社会结构研究提供新证据。\n适合 考古与历史爱好者"
+      "title": "How we measured AI writing across arXiv, and where the measurement breaks",
+      "url": "https://unslop.run/blog/measuring-ai-writing-on-arxiv",
+      "summary": "核心 研究测量arXiv论文AI写作比例，发现约三分之一新论文疑似机器生成，且学科差异显著。\n要点 校准假阳性率以0.4%为基准；计算机科学领域AI写作比例最高达65%；数学领域低比例可能因检测盲区或低采用率。\n亮点 以预ChatGPT论文为控制组，有效排除假阳性干扰。\n适合 AI伦理研究者；学术出版从业者。"
     },
     {
-      "title": "The Zen of Parallel Programming",
-      "url": "https://smolnero.com/posts/the-zen-of-parallel-programming",
-      "summary": "核心 将并行编程的协调之道类比于人的内在和谐与禅宗智慧。\n要点 多处理器不自动提升效率，关键在于任务分解与通信同步；人的内在冲突类似资源竞争，导致内耗与疲惫；诚实沟通是内在同步，能消除焦虑与burnout。\n亮点 以技术为镜，揭示“协调既有力量”的普世哲学。\n适合 后端/系统架构/技术哲学爱好者"
+      "title": "I wrote an bash enumerator because I was sick of xargs",
+      "url": "https://numerlab.org/2025/07/20/bashumerate-enumerator/",
+      "summary": "核心 bashumerate是一个统一的shell迭代器，简化文件、行、范围和列表的迭代。\n要点 支持四种迭代源；具备过滤器和NUL安全；可扩展自定义源函数。\n亮点 统一{}占位符，安全处理含空格文件名，避免xargs陷阱。\n适合 Shell脚本开发者与DevOps工程师"
     },
     {
-      "title": "What does the Riemann zeta function have to do with the distribution of primes?",
-      "url": "https://hidden-phenomena.com/articles/rh",
-      "summary": "核心 黎曼ζ函数通过欧拉乘积公式揭示素数分布规律。\n要点 素数无限性需量化分布；ζ函数定义及欧拉乘积分解；分解基于唯一分解定理。\n亮点 欧拉乘积公式直接关联ζ函数与素数分布。\n适合 数论研究者；密码学工程师"
+      "title": "LEDs’ potential to save our night skies",
+      "url": "https://spectrum.ieee.org/led-light-pollution",
+      "summary": "核心 LED照明若设计不当，反而加剧光污染与健康风险\n要点 过度照明制造阴影降低能见度，与安全初衷背道而驰；LED蓝光抑制褪黑素，关联肥胖癌症等疾病；历史城市案例显示新旧技术混杂，缺乏有效管控\n亮点 过量劣质照明制造虚假黑暗，诱发“更多照明需求”的恶性循环\n适合 智慧城市/公共健康/照明设计从业者"
+    },
+    {
+      "title": "Corners Don't Look Like That: Regarding Screenspace Ambient Occlusion (2012)",
+      "url": "https://nothings.org/gamedev/ssao/",
+      "summary": "核心 SSAO渲染中房间角落过暗不符合物理现实，作者用照片证据进行反驳。\n要点 SSAO对AO和辐射度的近似存在误差；错误地将暗化效果应用于所有光照类型；调参权重过高导致效果失真\n亮点 作者通过真实房间照片证明SSAO渲染的角落过暗现象不符合物理现实。\n适合 游戏图形程序员"
     }
   ],
   "gh_repos": [
     {
       "name": "rohitg00/ai-engineering-from-scratch",
       "url": "https://github.com/rohitg00/ai-engineering-from-scratch",
-      "description": "学习它。构建它。为他人交付它。",
+      "description": "学习、构建并交付给他人。",
       "stars": 5,
       "language": "Python",
       "description_original": "Learn it. Build it. Ship it for others."
@@ -87,7 +92,7 @@
     {
       "name": "diegosouzapw/OmniRoute",
       "url": "https://github.com/diegosouzapw/OmniRoute",
-      "description": "免费AI网关：一个端点连接160+提供商（50+免费），支持Claude Code、GPT等。RTK+Caveman压缩节省15-95% tokens，智能回退，MCP/A2A，多模态API，支持桌面/PWA。",
+      "description": "免费AI网关：一个端点支持160+提供商（50+免费），可连接Claude Code、Codex、Cursor、Cline和Copilot至免费的Claude/GPT/Gemini。RTK+Caveman堆叠压缩节省15-95% token，具备智能自动回退、MCP/A2A、多模态API及桌面/PWA支持。",
       "stars": 3,
       "language": "TypeScript",
       "description_original": "Never stop coding. Free AI gateway: one endpoint, 160+ providers (50+ free), connect Claude Code, Codex, Cursor, Cline & Copilot to FREE Claude/GPT/Gemini. RTK+Caveman stacked compression saves 15-95% tokens, smart auto-fallback, MCP/A2A, multimodal APIs, Desktop/PWA."
@@ -95,7 +100,7 @@
     {
       "name": "MoonshotAI/kimi-cli",
       "url": "https://github.com/MoonshotAI/kimi-cli",
-      "description": "Kimi Code CLI是你下一个CLI代理。",
+      "description": "Kimi Code CLI 是你下一个命令行代理。",
       "stars": 5,
       "language": "Python",
       "description_original": "Kimi Code CLI is your next CLI agent."
@@ -119,7 +124,7 @@
     {
       "name": "HKUDS/Vibe-Trading",
       "url": "https://github.com/HKUDS/Vibe-Trading",
-      "description": "Vibe-Trading: 你的个人交易代理",
+      "description": "Vibe-Trading：你的个人交易代理。",
       "stars": 3,
       "language": "Python",
       "description_original": "\"Vibe-Trading: Your Personal Trading Agent\""
@@ -127,7 +132,7 @@
     {
       "name": "MadsLorentzen/ai-job-search",
       "url": "https://github.com/MadsLorentzen/ai-job-search",
-      "description": "基于Claude Code的AI驱动求职框架。复制它，填写你的资料，让Claude评估职位、定制简历、撰写求职信并为你面试做准备。",
+      "description": "基于Claude Code的AI求职框架。复制项目，填写个人资料，即可让Claude评估职位、定制简历、撰写求职信并准备面试。",
       "stars": 3,
       "language": "TypeScript",
       "description_original": "AI-powered job application framework built on Claude Code. Fork it, fill in your profile, and let Claude evaluate jobs, tailor CVs, write cover letters, and prepare you for interviews."
@@ -135,7 +140,7 @@
     {
       "name": "iflytek/astron-rpa",
       "url": "https://github.com/iflytek/astron-rpa",
-      "description": "即用型自动化工具的代理就绪RPA套件。为个人和企业打造。",
+      "description": "即用型自动化工具的代理就绪RPA套件，面向个人与企业。",
       "stars": 4,
       "language": "Java",
       "description_original": "Agent-ready RPA suite with out-of-the-box automation tools. Built for individuals and enterprises."
@@ -151,7 +156,7 @@
     {
       "name": "HKUDS/DeepTutor",
       "url": "https://github.com/HKUDS/DeepTutor",
-      "description": "DeepTutor: 终身个性化辅导。https://deeptutor.info/。",
+      "description": "DeepTutor：终身个性化辅导。https://deeptutor.info/。",
       "stars": 3,
       "language": "Python",
       "description_original": "DeepTutor: Lifelong Personalized Tutoring. https://deeptutor.info/."
@@ -159,7 +164,7 @@
     {
       "name": "hoainho/img2threejs",
       "url": "https://github.com/hoainho/img2threejs",
-      "description": "将参考图像中的对象重建为纯代码、程序化、质量门控、动画就绪的Three.js模型。高效的图像转3D。",
+      "description": "将参考图像中的对象重建为纯代码、过程化、质量可控、动画就绪的Three.js模型。高效实现图像转3D。",
       "stars": 3,
       "language": "Python",
       "description_original": "Rebuild the object in a reference image as a code-only, procedural, quality-gated, animation-ready Three.js model. Token-efficient image-to-3D."
@@ -167,7 +172,7 @@
     {
       "name": "usestrix/strix",
       "url": "https://github.com/usestrix/strix",
-      "description": "开源AI渗透测试工具，可发现并修复应用漏洞。",
+      "description": "[usestrix/strix] 开源AI渗透测试工具，用于发现和修复应用程序漏洞。",
       "stars": 3,
       "language": "Python",
       "description_original": "Open-source AI penetration testing tool to find and fix your app’s vulnerabilities."
@@ -175,7 +180,7 @@
     {
       "name": "stupside/castor",
       "url": "https://github.com/stupside/castor",
-      "description": "指向任意网页即可查找视频、提取流、转码并实时投射至电视，甚至能烧录字幕。",
+      "description": "[stupside/castor] 指向任意网页即可查找视频、提取流、实时转码并投射至电视，甚至可烧录字幕。",
       "stars": 3,
       "language": "Go",
       "description_original": "Point it at any web page and it finds the video, extracts the stream, transcodes it and casts in real time to your TV. It even burns subtitles…."
@@ -183,7 +188,7 @@
     {
       "name": "coreyhaines31/marketingskills",
       "url": "https://github.com/coreyhaines31/marketingskills",
-      "description": "面向Claude Code和AI代理的营销技能，涵盖转化率优化、文案写作、SEO、数据分析与增长工程。",
+      "description": "[coreyhaines31/marketingskills] 为Claude Code和AI代理提供营销技能，涵盖CRO、文案、SEO、分析和增长工程。",
       "stars": 2,
       "language": "JavaScript",
       "description_original": "Marketing skills for Claude Code and AI agents. CRO, copywriting, SEO, analytics, and growth engineering."
@@ -191,7 +196,7 @@
     {
       "name": "langchain-ai/openwiki",
       "url": "https://github.com/langchain-ai/openwiki",
-      "description": "OpenWiki is a CLI that writes and maintains agent documentation for your codebase.",
+      "description": "[langchain-ai/openwiki] OpenWiki是一个CLI工具，可为您的代码库编写和维护代理文档。",
       "stars": 2,
       "language": "TypeScript",
       "description_original": "OpenWiki is a CLI that writes and maintains agent documentation for your codebase."
@@ -199,7 +204,7 @@
     {
       "name": "dramaclaw/dramaclaw",
       "url": "https://github.com/dramaclaw/dramaclaw",
-      "description": "通用AIGC视频引擎——从剧本到成片一条流水线，可制作漫剧、广告、电商视频及乙女游戏等多种内容。",
+      "description": "[dramaclaw/dramaclaw] 通用AIGC视频引擎——从剧本到成片一条流水线，支持漫剧、广告、电商、乙游等。",
       "stars": 2,
       "language": "TypeScript",
       "description_original": "A general-purpose AIGC video engine: script to finished film in one pipeline — dramas, ads, product videos, otome games, and more. | 通用 AIGC 视频引擎 —— 从剧本到成片一条流水线，漫剧、广告、电商、乙游皆可"
@@ -207,7 +212,7 @@
     {
       "name": "1jehuang/jcode",
       "url": "https://github.com/1jehuang/jcode",
-      "description": "编码代理框架",
+      "description": "[1jehuang/jcode] 编码代理框架。",
       "stars": 2,
       "language": "Rust",
       "description_original": "Coding Agent Harness"
@@ -215,7 +220,7 @@
     {
       "name": "MatheuZSecurity/Furtex",
       "url": "https://github.com/MatheuZSecurity/Furtex",
-      "description": "用于Linux的后渗透与规避研究工具集。",
+      "description": "[MatheuZSecurity/Furtex] Linux后渗透与规避研究工具包。",
       "stars": 2,
       "language": "C",
       "description_original": "Post-exploitation and evasion research toolkit for Linux."
@@ -223,7 +228,7 @@
     {
       "name": "xuanyustudio/LocalMiniDrama",
       "url": "https://github.com/xuanyustudio/LocalMiniDrama",
-      "description": "🎬 seedance2接入  开源本地 AI 短剧 & 漫剧生成工具 —— 从故事到成片一站式完成，数据不出本机，短剧工作流管理平台，高灵活度，AI真人剧，AI漫剧本地搞定。 Open-source local AI short drama maker: story → storyboard → video, fully offline, your data stays yours. 纳米流水线",
+      "description": "[xuanyustudio/LocalMiniDrama] 开源本地AI短剧生成工具：从故事到成片一站式完成，完全离线，数据保留在本机。",
       "stars": 2,
       "language": "JavaScript",
       "description_original": "🎬 seedance2接入  开源本地 AI 短剧 & 漫剧生成工具 —— 从故事到成片一站式完成，数据不出本机，短剧工作流管理平台，高灵活度，AI真人剧，AI漫剧本地搞定。 Open-source local AI short drama maker: story → storyboard → video, fully offline, your data stays yours. 纳米流水线"
@@ -231,7 +236,7 @@
     {
       "name": "kunchenguid/firstmate",
       "url": "https://github.com/kunchenguid/firstmate",
-      "description": "与一个智能体对话。与团队协同发布。",
+      "description": "[kunchenguid/firstmate] 与单一代理对话，与团队协同发布。",
       "stars": 2,
       "language": "Shell",
       "description_original": "Talk to one agent. Ship with a crew."
