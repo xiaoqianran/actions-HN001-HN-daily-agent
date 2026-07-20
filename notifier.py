@@ -97,8 +97,8 @@ class WeChatNotifier:
             body += "## ✅ 首次默认配置已完成\n"
             body += "你现在可以**无需改代码**，直接在 GitHub 仓库中自定义日报参数：\n\n"
             body += "- `Settings → Secrets and variables → Actions → Variables`\n"
-            body += "- 新建变量 `HN_TOP_COUNT`（例如 `8`）\n"
-            body += "- 新建变量 `GITHUB_TOP_COUNT`（例如 `8`）\n"
+            body += "- 新建变量 `HN_TOP_COUNT`（例如 `15`）\n"
+            body += "- 新建变量 `GH_TOP_COUNT`（例如 `20`，勿用 GITHUB_ 前缀）\n"
             body += "- 新建变量 `SUMMARY_PROMPT_TEMPLATE`（需包含 `{title}` 和 `{content}`）\n\n"
             body += "配置后，下一次日报会自动按你的设置生成。\n"
 

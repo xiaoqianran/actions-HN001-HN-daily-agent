@@ -4,8 +4,9 @@ Hacker News 日报 Agent
 """
 import time
 from config import (
+    DEFAULT_GITHUB_TOP_COUNT,
+    DEFAULT_HN_TOP_COUNT,
     DEFAULT_SUMMARY_PROMPT_TEMPLATE,
-    DEFAULT_TOP_COUNT,
     get_github_top_count,
     get_hn_top_count,
     get_model_name,
@@ -42,8 +43,8 @@ def main():
             prompt_template = DEFAULT_SUMMARY_PROMPT_TEMPLATE
 
         should_show_customize_tip = (
-            hn_top_count == DEFAULT_TOP_COUNT
-            and github_top_count == DEFAULT_TOP_COUNT
+            hn_top_count == DEFAULT_HN_TOP_COUNT
+            and github_top_count == DEFAULT_GITHUB_TOP_COUNT
             and prompt_template == DEFAULT_SUMMARY_PROMPT_TEMPLATE
         )
 

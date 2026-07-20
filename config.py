@@ -12,7 +12,10 @@ load_dotenv()
 # 禁用代理的常量配置
 _NO_PROXY: Dict[str, Optional[str]] = {"http": None, "https": None}
 
-DEFAULT_TOP_COUNT = 5
+DEFAULT_HN_TOP_COUNT = 15
+DEFAULT_GITHUB_TOP_COUNT = 20
+# 兼容旧引用
+DEFAULT_TOP_COUNT = DEFAULT_HN_TOP_COUNT
 
 # OpenAI 兼容接口默认值（NVIDIA NIM）
 DEFAULT_OPENAI_BASE_URL = "https://integrate.api.nvidia.com/v1"
@@ -90,12 +93,12 @@ def _get_positive_int_env(var_name: str, default: int) -> int:
 
 def get_hn_top_count() -> int:
     """获取 HN 抓取数量"""
-    return _get_positive_int_env("HN_TOP_COUNT", DEFAULT_TOP_COUNT)
+    return _get_positive_int_env("HN_TOP_COUNT", DEFAULT_HN_TOP_COUNT)
 
 
 def get_github_top_count() -> int:
     """获取 GitHub Trending 抓取数量"""
-    return _get_positive_int_env("GITHUB_TOP_COUNT", DEFAULT_TOP_COUNT)
+    return _get_positive_int_env("GITHUB_TOP_COUNT", DEFAULT_GITHUB_TOP_COUNT)
 
 
 def get_summary_prompt_template() -> str:

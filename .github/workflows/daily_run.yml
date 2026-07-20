@@ -8,10 +8,10 @@ on:
   workflow_dispatch:
     inputs:
       hn_top_count:
-        description: "HN 抓取数量（可选，默认 5）"
+        description: "HN 抓取数量（可选，默认 15）"
         required: false
       github_top_count:
-        description: "GitHub Trending 抓取数量（可选，默认 5）"
+        description: "GitHub Trending 抓取数量（可选，默认 20）"
         required: false
       summary_prompt_template:
         description: "摘要提示词模板（可选，需包含 {title} 和 {content}）"
@@ -43,7 +43,8 @@ jobs:
           OPENAI_BASE_URL: ${{ vars.OPENAI_BASE_URL || 'https://integrate.api.nvidia.com/v1' }}
           MODEL_NAME: ${{ vars.MODEL_NAME || 'stepfun-ai/step-3.5-flash' }}
           PUSHPLUS_TOKEN: ${{ secrets.PUSHPLUS_TOKEN }}
-          HN_TOP_COUNT: ${{ github.event.inputs.hn_top_count || vars.HN_TOP_COUNT }}
-          GITHUB_TOP_COUNT: ${{ github.event.inputs.github_top_count || vars.GITHUB_TOP_COUNT }}
+          HN_TOP_COUNT: ${{ github.event.inputs.hn_top_count || vars.HN_TOP_COUNT || '15' }}
+          # GitHub 禁止 Variables 名以 GITHUB_ 开头，故仓库变量用 GH_TOP_COUNT
+          GITHUB_TOP_COUNT: ${{ github.event.inputs.github_top_count || vars.GH_TOP_COUNT || '20' }}
           SUMMARY_PROMPT_TEMPLATE: ${{ github.event.inputs.summary_prompt_template || vars.SUMMARY_PROMPT_TEMPLATE }}
         run: python news_agent.py

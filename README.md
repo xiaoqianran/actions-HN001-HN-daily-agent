@@ -99,8 +99,8 @@ MODEL_NAME      = stepfun-ai/step-3.5-flash
 你可以在 `Settings` → `Secrets and variables` → `Actions` → `Variables` 新建：
 
 ```bash
-HN_TOP_COUNT=8
-GITHUB_TOP_COUNT=8
+HN_TOP_COUNT=15
+GH_TOP_COUNT=20
 SUMMARY_PROMPT_TEMPLATE=请阅读以下内容并给出中文摘要。标题：{title}\n正文：{content}\n要求：先一句话结论，再列2-4条关键点。
 ```
 
@@ -186,8 +186,8 @@ schedule:
 
 **A:** 可以，不用改代码。到 `Settings` → `Secrets and variables` → `Actions` → `Variables` 设置：
 
-- `HN_TOP_COUNT`（默认 5）
-- `GITHUB_TOP_COUNT`（默认 5）
+- `HN_TOP_COUNT`（默认 15）
+- `GH_TOP_COUNT`（默认 20；注入为环境变量 `GITHUB_TOP_COUNT`。注意：仓库 Variable 名不能以 `GITHUB_` 开头）
 
 ⚠️ **注意**：增加数量会消耗更多 LLM API 额度，也可能导致推送超时。
 
