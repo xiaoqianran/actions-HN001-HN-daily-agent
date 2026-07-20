@@ -90,6 +90,7 @@ class SiteBuilder:
 
         digests = self._load_all_digests()
         (self.public_dir / "styles.css").write_text(self._css(), encoding="utf-8")
+        (self.public_dir / "theme.js").write_text(self._theme_js(), encoding="utf-8")
 
         # 归档页
         for d in digests:
@@ -155,10 +156,16 @@ class SiteBuilder:
 
         parts = [
             "<section class='hero'>",
-            f"<p class='eyebrow'>Hacker News · GitHub Trending</p>",
+            f"<p class='eyebrow'>Catppuccin · Hacker News · GitHub Trending</p>",
             f"<h1>{_esc(date_id)} 技术日报</h1>",
             f"<p class='meta'>HN {len(hn_articles)} 篇 · Trending {len(gh_repos)} 项"
             f" · 生成于 {_esc((digest.get('generated_at') or '')[:19].replace('T', ' '))} UTC</p>",
+            "<div class='hero-pills' aria-hidden='true'>"
+            "<span class='pill peach'>Peach</span>"
+            "<span class='pill mauve'>Mauve</span>"
+            "<span class='pill blue'>Blue</span>"
+            "<span class='pill green'>Green</span>"
+            "</div>",
             "</section>",
             # 同一页完整汇总，不拆分
             self._render_hn_section(hn_articles),
@@ -195,23 +202,25 @@ class SiteBuilder:
                 f"""
 <article class="card">
   <header class="card-head">
-    <span class="idx">{idx}</span>
-    <div>
+    <span class="idx" aria-hidden="true">{idx}</span>
+    <div class="card-title">
       <h3><a href="{_esc(item.get('url') or '#')}" target="_blank" rel="noopener noreferrer">{_esc(item.get('title') or '无标题')}</a></h3>
       <a class="origin" href="{_esc(item.get('url') or '#')}" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
     </div>
   </header>
   <dl class="summary">
-    <div><dt>核心</dt><dd>{_esc(fields.get('核心') or '—')}</dd></div>
-    <div><dt>要点</dt><dd>{points_html or _esc(fields.get('要点') or '—')}</dd></div>
-    <div><dt>亮点</dt><dd>{_esc(fields.get('亮点') or '—')}</dd></div>
-    <div><dt>适合</dt><dd><span class="tag">{_esc(fields.get('适合') or '通用')}</span></dd></div>
+    <div class="row row-core"><dt>核心</dt><dd>{_esc(fields.get('核心') or '—')}</dd></div>
+    <div class="row row-points"><dt>要点</dt><dd>{points_html or _esc(fields.get('要点') or '—')}</dd></div>
+    <div class="row row-spark"><dt>亮点</dt><dd>{_esc(fields.get('亮点') or '—')}</dd></div>
+    <div class="row row-fit"><dt>适合</dt><dd><span class="tag">{_esc(fields.get('适合') or '通用')}</span></dd></div>
   </dl>
 </article>
 """
             )
         return (
-            f"<section id='hn'><h2>Hacker News 精选 <span class='count'>Top {len(articles)}</span></h2>"
+            f"<section id='hn' aria-labelledby='hn-heading'>"
+            f"<h2 id='hn-heading'><span class='dot hn'></span>Hacker News 精选 "
+            f"<span class='count'>Top {len(articles)}</span></h2>"
             + "\n".join(cards)
             + "</section>"
         )
@@ -242,11 +251,11 @@ class SiteBuilder:
 """
             )
         return f"""
-<section id="gh">
-  <h2>GitHub Trending <span class="count">Top {len(repos)}</span></h2>
-  <div class="table-wrap">
+<section id="gh" aria-labelledby="gh-heading">
+  <h2 id="gh-heading"><span class="dot gh"></span>GitHub Trending <span class="count">Top {len(repos)}</span></h2>
+  <div class="table-wrap" role="region" aria-label="GitHub Trending 列表" tabindex="0">
     <table>
-      <thead><tr><th>#</th><th>仓库</th><th>语言</th><th>Stars</th></tr></thead>
+      <thead><tr><th scope="col">#</th><th scope="col">仓库</th><th scope="col">语言</th><th scope="col">Stars</th></tr></thead>
       <tbody>
         {''.join(rows)}
       </tbody>
@@ -267,18 +276,13 @@ class SiteBuilder:
         for d in digests[:60]:
             date = d["date"]
             cls = "active" if date == active_date else ""
-            href = (
-                f"{base_prefix}/index.html"
-                if digests and date == digests[0]["date"] and base_prefix == "."
-                else f"{base_prefix}/archive/{date}.html"
-            )
-            # 首页上最新日期链到 index；归档页上最新也链到 ../index.html
             if digests and date == digests[0]["date"]:
                 href = f"{base_prefix}/index.html"
             else:
                 href = f"{base_prefix}/archive/{date}.html"
+            aria = ' aria-current="page"' if date == active_date else ""
             archive_links.append(
-                f'<li><a class="{cls}" href="{href}">{_esc(date)}</a></li>'
+                f'<li><a class="{cls}" href="{href}"{aria}>{_esc(date)}</a></li>'
             )
 
         archive_html = (
@@ -288,131 +292,470 @@ class SiteBuilder:
         )
 
         return f"""<!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-theme="mocha">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>{_esc(title)}</title>
-  <meta name="description" content="Hacker News + GitHub Trending 每日技术日报" />
+  <meta name="description" content="Hacker News + GitHub Trending 每日技术日报 · Catppuccin" />
+  <meta name="color-scheme" content="dark light" />
+  <meta name="theme-color" content="#1e1e2e" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="{base_prefix}/styles.css" />
+  <script>
+    (function () {{
+      try {{
+        var t = localStorage.getItem("ctp-theme");
+        if (!t) {{
+          t = window.matchMedia("(prefers-color-scheme: light)").matches ? "latte" : "mocha";
+        }}
+        document.documentElement.setAttribute("data-theme", t);
+      }} catch (e) {{
+        document.documentElement.setAttribute("data-theme", "mocha");
+      }}
+    }})();
+  </script>
 </head>
 <body>
+  <a class="skip-link" href="#main">跳到正文</a>
   <div class="layout">
-    <aside class="sidebar">
-      <a class="brand" href="{base_prefix}/index.html">HN Daily</a>
-      <p class="sidebar-desc">Hacker News 精选 + GitHub Trending 完整汇总</p>
-      <nav>
+    <aside class="sidebar" aria-label="站点导航">
+      <div class="brand-row">
+        <a class="brand" href="{base_prefix}/index.html">
+          <span class="brand-mark" aria-hidden="true">猫</span>
+          <span>HN Daily</span>
+        </a>
+        <button type="button" class="theme-toggle" id="theme-toggle" aria-label="切换 Catppuccin 主题">
+          <span class="theme-icon" aria-hidden="true">◐</span>
+          <span class="theme-label">Mocha</span>
+        </button>
+      </div>
+      <p class="sidebar-desc">Catppuccin Userstyles · HN 精选 + GitHub Trending 完整汇总</p>
+      <nav aria-label="日报归档">
         <h2>归档</h2>
         {archive_html}
       </nav>
-      <footer class="sidebar-foot">GitHub Pages · Actions 自动部署</footer>
+      <footer class="sidebar-foot">
+        <span class="flavor-badge">Catppuccin</span>
+        GitHub Pages · Actions
+      </footer>
     </aside>
-    <main class="content">
+    <main class="content" id="main">
       {body}
-      <footer class="page-foot">由 actions-HN001-HN-daily-agent 自动生成 · 内容汇总不拆分</footer>
+      <footer class="page-foot">由 actions-HN001-HN-daily-agent 自动生成 · 风格 Catppuccin</footer>
     </main>
   </div>
+  <script src="{base_prefix}/theme.js" defer></script>
 </body>
 </html>
 """
 
     def _css(self) -> str:
+        # Catppuccin Mocha (default) + Latte (light) — official palette
+        # Soft UI Evolution: readable contrast, subtle depth, focus rings
         return """
-:root {
-  --bg: #0b1020;
-  --panel: #121a2f;
-  --card: #172038;
-  --border: #273352;
-  --text: #e8eefc;
-  --muted: #93a0bf;
-  --accent: #ff6b2c;
-  --accent2: #5b9dff;
-  --tag: #243356;
-  --shadow: 0 10px 30px rgba(0,0,0,.25);
-  --radius: 14px;
-  --font: "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+/* ========== Catppuccin flavors ========== */
+:root, [data-theme="mocha"] {
+  --ctp-rosewater: #f5e0dc;
+  --ctp-flamingo: #f2cdcd;
+  --ctp-pink: #f5c2e7;
+  --ctp-mauve: #cba6f7;
+  --ctp-red: #f38ba8;
+  --ctp-maroon: #eba0ac;
+  --ctp-peach: #fab387;
+  --ctp-yellow: #f9e2af;
+  --ctp-green: #a6e3a1;
+  --ctp-teal: #94e2d5;
+  --ctp-sky: #89dceb;
+  --ctp-sapphire: #74c7ec;
+  --ctp-blue: #89b4fa;
+  --ctp-lavender: #b4befe;
+  --ctp-text: #cdd6f4;
+  --ctp-subtext1: #bac2de;
+  --ctp-subtext0: #a6adc8;
+  --ctp-overlay2: #9399b2;
+  --ctp-overlay1: #7f849c;
+  --ctp-overlay0: #6c7086;
+  --ctp-surface2: #585b70;
+  --ctp-surface1: #45475a;
+  --ctp-surface0: #313244;
+  --ctp-base: #1e1e2e;
+  --ctp-mantle: #181825;
+  --ctp-crust: #11111b;
+  color-scheme: dark;
 }
-* { box-sizing: border-box; }
-html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text); font-family: var(--font); }
-a { color: var(--accent2); text-decoration: none; }
-a:hover { text-decoration: underline; }
-.layout { display: grid; grid-template-columns: 240px 1fr; min-height: 100vh; }
+
+[data-theme="latte"] {
+  --ctp-rosewater: #dc8a78;
+  --ctp-flamingo: #dd7878;
+  --ctp-pink: #ea76cb;
+  --ctp-mauve: #8839ef;
+  --ctp-red: #d20f39;
+  --ctp-maroon: #e64553;
+  --ctp-peach: #fe640b;
+  --ctp-yellow: #df8e1d;
+  --ctp-green: #40a02b;
+  --ctp-teal: #179299;
+  --ctp-sky: #04a5e5;
+  --ctp-sapphire: #209fb5;
+  --ctp-blue: #1e66f5;
+  --ctp-lavender: #7287fd;
+  --ctp-text: #4c4f69;
+  --ctp-subtext1: #5c5f77;
+  --ctp-subtext0: #6c6f85;
+  --ctp-overlay2: #7c7f93;
+  --ctp-overlay1: #8c8fa1;
+  --ctp-overlay0: #9ca0b0;
+  --ctp-surface2: #acb0be;
+  --ctp-surface1: #bcc0cc;
+  --ctp-surface0: #ccd0da;
+  --ctp-base: #eff1f5;
+  --ctp-mantle: #e6e9ef;
+  --ctp-crust: #dce0e8;
+  color-scheme: light;
+}
+
+/* Semantic tokens */
+:root {
+  --bg: var(--ctp-base);
+  --bg-sidebar: var(--ctp-mantle);
+  --bg-card: var(--ctp-mantle);
+  --bg-elevated: var(--ctp-surface0);
+  --border: color-mix(in srgb, var(--ctp-surface1) 85%, transparent);
+  --text: var(--ctp-text);
+  --muted: var(--ctp-subtext0);
+  --link: var(--ctp-blue);
+  --link-hover: var(--ctp-sky);
+  --accent: var(--ctp-peach);
+  --accent-2: var(--ctp-mauve);
+  --focus: var(--ctp-lavender);
+  --radius: 14px;
+  --radius-sm: 10px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --shadow: 0 8px 24px color-mix(in srgb, var(--ctp-crust) 35%, transparent);
+  --font: "IBM Plex Sans", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --ease: 200ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  --content-max: 46rem;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+html, body {
+  margin: 0; padding: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+body {
+  background-image:
+    radial-gradient(1200px 500px at 10% -10%, color-mix(in srgb, var(--ctp-mauve) 14%, transparent), transparent 60%),
+    radial-gradient(900px 400px at 100% 0%, color-mix(in srgb, var(--ctp-peach) 10%, transparent), transparent 55%);
+  background-attachment: fixed;
+}
+
+/* A11y */
+.skip-link {
+  position: absolute; left: -999px; top: 0; z-index: 100;
+  background: var(--ctp-lavender); color: var(--ctp-base);
+  padding: 8px 12px; border-radius: 0 0 8px 0; font-weight: 600;
+}
+.skip-link:focus { left: 0; }
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+::selection {
+  background: color-mix(in srgb, var(--ctp-overlay2) 35%, transparent);
+  color: var(--ctp-text);
+}
+
+a { color: var(--link); text-decoration: none; transition: color var(--ease); }
+a:hover { color: var(--link-hover); text-decoration: underline; text-underline-offset: 3px; }
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(220px, 260px) minmax(0, 1fr);
+  min-height: 100vh;
+}
+
+/* Sidebar */
 .sidebar {
   position: sticky; top: 0; height: 100vh; overflow: auto;
-  padding: 24px 18px; border-right: 1px solid var(--border); background: #0a0f1c;
+  padding: var(--space-5) var(--space-4);
+  border-right: 1px solid var(--border);
+  background: color-mix(in srgb, var(--bg-sidebar) 92%, transparent);
+  backdrop-filter: blur(10px);
 }
-.brand { display: inline-block; font-weight: 800; font-size: 1.25rem; color: var(--text); letter-spacing: .3px; }
-.sidebar-desc { color: var(--muted); font-size: .85rem; line-height: 1.5; margin: 10px 0 22px; }
-.sidebar h2 { font-size: .75rem; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin: 0 0 10px; }
-.archive-list { list-style: none; margin: 0; padding: 0; }
+.brand-row {
+  display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  margin-bottom: var(--space-3);
+}
+.brand {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-weight: 700; font-size: 1.1rem; color: var(--text); letter-spacing: 0.2px;
+}
+.brand:hover { color: var(--ctp-lavender); text-decoration: none; }
+.brand-mark {
+  width: 32px; height: 32px; border-radius: 10px;
+  display: grid; place-items: center;
+  font-size: 0.85rem; font-weight: 700;
+  color: var(--ctp-base);
+  background: linear-gradient(145deg, var(--ctp-mauve), var(--ctp-blue));
+  box-shadow: 0 4px 12px color-mix(in srgb, var(--ctp-mauve) 35%, transparent);
+}
+.theme-toggle {
+  display: inline-flex; align-items: center; gap: 6px;
+  border: 1px solid var(--border);
+  background: var(--bg-elevated);
+  color: var(--ctp-subtext1);
+  border-radius: 999px;
+  padding: 6px 10px;
+  font: inherit; font-size: 0.75rem; font-weight: 600;
+  cursor: pointer;
+  transition: background var(--ease), border-color var(--ease), color var(--ease), transform 150ms ease;
+}
+.theme-toggle:hover {
+  border-color: var(--ctp-lavender);
+  color: var(--ctp-text);
+  background: color-mix(in srgb, var(--ctp-lavender) 12%, var(--bg-elevated));
+}
+.theme-toggle:active { transform: scale(0.97); }
+.theme-icon { color: var(--ctp-yellow); }
+.sidebar-desc {
+  color: var(--muted); font-size: 0.86rem; line-height: 1.5;
+  margin: 0 0 var(--space-5);
+}
+.sidebar h2 {
+  font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em;
+  color: var(--ctp-overlay1); margin: 0 0 var(--space-2); font-weight: 700;
+}
+.archive-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; }
 .archive-list a {
-  display: block; padding: 8px 10px; border-radius: 8px; color: var(--muted); font-size: .92rem;
+  display: block; padding: 8px 10px; border-radius: var(--radius-sm);
+  color: var(--ctp-subtext0); font-size: 0.9rem; font-family: var(--font-mono);
+  transition: background var(--ease), color var(--ease);
 }
-.archive-list a:hover, .archive-list a.active {
-  background: var(--panel); color: var(--text); text-decoration: none;
+.archive-list a:hover {
+  background: color-mix(in srgb, var(--ctp-surface0) 80%, transparent);
+  color: var(--ctp-text); text-decoration: none;
 }
-.sidebar-foot { margin-top: 28px; font-size: .72rem; color: #66748f; }
-.content { padding: 28px 32px 48px; max-width: 980px; }
-.hero { margin-bottom: 28px; }
-.eyebrow { color: var(--accent); font-size: .8rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; margin: 0 0 8px; }
-.hero h1 { margin: 0 0 8px; font-size: 1.9rem; line-height: 1.25; }
-.meta, .muted { color: var(--muted); }
+.archive-list a.active {
+  background: color-mix(in srgb, var(--ctp-lavender) 18%, var(--ctp-surface0));
+  color: var(--ctp-lavender); font-weight: 600;
+}
+.sidebar-foot {
+  margin-top: var(--space-6); font-size: 0.72rem; color: var(--ctp-overlay0);
+  display: flex; flex-direction: column; gap: 8px;
+}
+.flavor-badge {
+  display: inline-flex; width: fit-content;
+  padding: 3px 8px; border-radius: 999px;
+  background: color-mix(in srgb, var(--ctp-mauve) 18%, transparent);
+  color: var(--ctp-mauve); font-weight: 700; letter-spacing: 0.04em;
+}
+
+/* Main */
+.content {
+  padding: var(--space-6) clamp(16px, 4vw, 40px) 56px;
+  max-width: calc(var(--content-max) + 120px);
+}
+.hero {
+  margin-bottom: var(--space-5);
+  padding: var(--space-5);
+  border-radius: calc(var(--radius) + 4px);
+  background:
+    linear-gradient(145deg,
+      color-mix(in srgb, var(--ctp-surface0) 70%, transparent),
+      color-mix(in srgb, var(--ctp-mantle) 90%, transparent));
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+.eyebrow {
+  color: var(--ctp-peach); font-size: 0.78rem; font-weight: 700;
+  letter-spacing: 0.08em; text-transform: uppercase; margin: 0 0 8px;
+}
+.hero h1 {
+  margin: 0 0 8px; font-size: clamp(1.55rem, 2.5vw, 2rem);
+  line-height: 1.25; letter-spacing: -0.02em; color: var(--ctp-text);
+}
+.meta, .muted { color: var(--muted); font-size: 0.92rem; }
+.hero-pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.pill {
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.04em;
+  padding: 3px 9px; border-radius: 999px; font-family: var(--font-mono);
+  border: 1px solid transparent;
+}
+.pill.peach { color: var(--ctp-peach); background: color-mix(in srgb, var(--ctp-peach) 16%, transparent); border-color: color-mix(in srgb, var(--ctp-peach) 30%, transparent); }
+.pill.mauve { color: var(--ctp-mauve); background: color-mix(in srgb, var(--ctp-mauve) 16%, transparent); border-color: color-mix(in srgb, var(--ctp-mauve) 30%, transparent); }
+.pill.blue { color: var(--ctp-blue); background: color-mix(in srgb, var(--ctp-blue) 16%, transparent); border-color: color-mix(in srgb, var(--ctp-blue) 30%, transparent); }
+.pill.green { color: var(--ctp-green); background: color-mix(in srgb, var(--ctp-green) 16%, transparent); border-color: color-mix(in srgb, var(--ctp-green) 30%, transparent); }
+
 section { margin: 28px 0 36px; }
 section > h2 {
-  display: flex; align-items: baseline; gap: 10px;
-  font-size: 1.25rem; margin: 0 0 16px; padding-bottom: 10px;
-  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; flex-wrap: wrap; gap: 10px;
+  font-size: 1.2rem; margin: 0 0 16px; padding-bottom: 12px;
+  border-bottom: 1px solid var(--border); color: var(--ctp-text);
 }
+.dot {
+  width: 10px; height: 10px; border-radius: 999px; display: inline-block;
+  box-shadow: 0 0 0 4px color-mix(in srgb, currentColor 18%, transparent);
+}
+.dot.hn { background: var(--ctp-peach); color: var(--ctp-peach); }
+.dot.gh { background: var(--ctp-blue); color: var(--ctp-blue); }
 .count {
-  font-size: .78rem; font-weight: 600; color: var(--muted);
-  background: var(--tag); padding: 3px 8px; border-radius: 999px;
+  font-size: 0.75rem; font-weight: 600; color: var(--ctp-subtext0);
+  background: var(--ctp-surface0); border: 1px solid var(--border);
+  padding: 3px 9px; border-radius: 999px; font-family: var(--font-mono);
 }
+
+/* Cards — Soft UI Evolution on Catppuccin surfaces */
 .card {
-  background: linear-gradient(180deg, var(--card), var(--panel));
-  border: 1px solid var(--border); border-radius: var(--radius);
-  padding: 16px 18px; margin: 0 0 14px; box-shadow: var(--shadow);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px 18px;
+  margin: 0 0 14px;
+  box-shadow: var(--shadow);
+  transition: border-color var(--ease), transform var(--ease), box-shadow var(--ease);
+}
+.card:hover {
+  border-color: color-mix(in srgb, var(--ctp-lavender) 40%, var(--border));
+  box-shadow: 0 12px 28px color-mix(in srgb, var(--ctp-crust) 28%, transparent);
 }
 .card-head { display: flex; gap: 12px; align-items: flex-start; }
+.card-title { min-width: 0; }
 .idx {
-  flex: 0 0 auto; width: 28px; height: 28px; border-radius: 8px;
-  display: grid; place-items: center; background: rgba(255,107,44,.15);
-  color: var(--accent); font-weight: 700; font-size: .85rem;
+  flex: 0 0 auto; width: 30px; height: 30px; border-radius: 10px;
+  display: grid; place-items: center;
+  background: color-mix(in srgb, var(--ctp-peach) 18%, var(--ctp-surface0));
+  color: var(--ctp-peach); font-weight: 700; font-size: 0.85rem;
+  font-family: var(--font-mono);
 }
 .card h3 { margin: 0 0 6px; font-size: 1.05rem; line-height: 1.4; }
-.card h3 a { color: var(--text); }
-.card h3 a:hover { color: var(--accent); }
-.origin { font-size: .82rem; color: var(--accent); }
-.summary { margin: 12px 0 0; }
-.summary > div { display: grid; grid-template-columns: 48px 1fr; gap: 10px; margin: 8px 0; }
+.card h3 a { color: var(--ctp-text); font-weight: 600; }
+.card h3 a:hover { color: var(--ctp-lavender); }
+.origin { font-size: 0.82rem; color: var(--ctp-peach); font-weight: 600; }
+.origin:hover { color: var(--ctp-yellow); }
+
+.summary { margin: 14px 0 0; display: grid; gap: 8px; }
+.summary .row {
+  display: grid; grid-template-columns: 52px 1fr; gap: 10px;
+  padding: 8px 10px; border-radius: var(--radius-sm);
+  background: color-mix(in srgb, var(--ctp-surface0) 55%, transparent);
+}
 .summary dt {
-  margin: 0; color: var(--muted); font-size: .78rem; font-weight: 700;
-  letter-spacing: .04em; padding-top: 2px;
+  margin: 0; font-size: 0.75rem; font-weight: 700;
+  letter-spacing: 0.04em; padding-top: 2px;
 }
-.summary dd { margin: 0; line-height: 1.55; color: #d7e0f5; font-size: .95rem; }
-.points { margin: 0; padding-left: 18px; }
+.summary dd { margin: 0; line-height: 1.6; color: var(--ctp-text); font-size: 0.95rem; }
+.row-core dt { color: var(--ctp-peach); }
+.row-points dt { color: var(--ctp-blue); }
+.row-spark dt { color: var(--ctp-yellow); }
+.row-fit dt { color: var(--ctp-green); }
+.points { margin: 0; padding-left: 1.1rem; }
 .points li { margin: 2px 0; }
+.points li::marker { color: var(--ctp-sapphire); }
 .tag {
-  display: inline-block; background: var(--tag); border: 1px solid var(--border);
-  border-radius: 999px; padding: 2px 10px; font-size: .82rem; color: #c8d6f5;
+  display: inline-block;
+  background: color-mix(in srgb, var(--ctp-green) 16%, var(--ctp-surface0));
+  border: 1px solid color-mix(in srgb, var(--ctp-green) 30%, var(--border));
+  border-radius: 999px; padding: 2px 10px; font-size: 0.82rem;
+  color: var(--ctp-green); font-weight: 600;
 }
+
+/* Table */
 .table-wrap {
-  overflow: auto; border: 1px solid var(--border); border-radius: var(--radius);
-  background: var(--panel); box-shadow: var(--shadow);
+  overflow: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-card);
+  box-shadow: var(--shadow);
 }
-table { width: 100%; border-collapse: collapse; font-size: .92rem; }
-th, td { padding: 12px 14px; border-bottom: 1px solid var(--border); vertical-align: top; text-align: left; }
-th { color: var(--muted); font-size: .78rem; letter-spacing: .04em; background: rgba(0,0,0,.18); }
+table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+th, td {
+  padding: 12px 14px; border-bottom: 1px solid var(--border);
+  vertical-align: top; text-align: left;
+}
+th {
+  color: var(--ctp-subtext0); font-size: 0.75rem; letter-spacing: 0.05em;
+  text-transform: uppercase; background: color-mix(in srgb, var(--ctp-surface0) 70%, transparent);
+  position: sticky; top: 0;
+}
+tbody tr { transition: background var(--ease); }
+tbody tr:hover { background: color-mix(in srgb, var(--ctp-surface0) 45%, transparent); }
 tr:last-child td { border-bottom: 0; }
-.num { width: 40px; color: var(--muted); }
-.repo { font-weight: 700; color: var(--text); }
-.desc { color: var(--muted); font-size: .85rem; margin-top: 4px; line-height: 1.45; }
-.lang, .stars { white-space: nowrap; color: #c3cee8; }
-.page-foot { margin-top: 40px; color: #66748f; font-size: .78rem; }
+.num { width: 40px; color: var(--ctp-overlay1); font-family: var(--font-mono); }
+.repo { font-weight: 700; color: var(--ctp-text); }
+.repo:hover { color: var(--ctp-blue); }
+.desc { color: var(--muted); font-size: 0.85rem; margin-top: 4px; line-height: 1.45; }
+.lang { white-space: nowrap; color: var(--ctp-sapphire); font-weight: 600; font-size: 0.85rem; }
+.stars { white-space: nowrap; color: var(--ctp-yellow); font-family: var(--font-mono); font-size: 0.85rem; }
+.page-foot {
+  margin-top: 40px; color: var(--ctp-overlay0); font-size: 0.78rem;
+  padding-top: 16px; border-top: 1px solid var(--border);
+}
 
 @media (max-width: 860px) {
   .layout { grid-template-columns: 1fr; }
-  .sidebar { position: relative; height: auto; border-right: 0; border-bottom: 1px solid var(--border); }
+  .sidebar {
+    position: relative; height: auto;
+    border-right: 0; border-bottom: 1px solid var(--border);
+  }
   .content { padding: 20px 16px 36px; }
-  .summary > div { grid-template-columns: 1fr; gap: 4px; }
+  .summary .row { grid-template-columns: 1fr; gap: 4px; }
+  .archive-list {
+    display: flex; flex-wrap: wrap; gap: 6px;
+  }
+  .archive-list a { padding: 6px 10px; }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+"""
+
+    def _theme_js(self) -> str:
+        return """
+(function () {
+  var root = document.documentElement;
+  var btn = document.getElementById("theme-toggle");
+  if (!btn) return;
+
+  function labelFor(theme) {
+    return theme === "latte" ? "Latte" : "Mocha";
+  }
+
+  function apply(theme) {
+    root.setAttribute("data-theme", theme);
+    try { localStorage.setItem("ctp-theme", theme); } catch (e) {}
+    var label = btn.querySelector(".theme-label");
+    if (label) label.textContent = labelFor(theme);
+    btn.setAttribute("aria-label", "当前主题 " + labelFor(theme) + "，点击切换");
+    var meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) meta.setAttribute("content", theme === "latte" ? "#eff1f5" : "#1e1e2e");
+  }
+
+  var current = root.getAttribute("data-theme") || "mocha";
+  apply(current);
+
+  btn.addEventListener("click", function () {
+    var next = (root.getAttribute("data-theme") === "latte") ? "mocha" : "latte";
+    apply(next);
+  });
+})();
 """

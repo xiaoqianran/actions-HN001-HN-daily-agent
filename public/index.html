@@ -1,273 +1,305 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-theme="mocha">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>技术日报 · 2026-07-20</title>
-  <meta name="description" content="Hacker News + GitHub Trending 每日技术日报" />
+  <meta name="description" content="Hacker News + GitHub Trending 每日技术日报 · Catppuccin" />
+  <meta name="color-scheme" content="dark light" />
+  <meta name="theme-color" content="#1e1e2e" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="./styles.css" />
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem("ctp-theme");
+        if (!t) {
+          t = window.matchMedia("(prefers-color-scheme: light)").matches ? "latte" : "mocha";
+        }
+        document.documentElement.setAttribute("data-theme", t);
+      } catch (e) {
+        document.documentElement.setAttribute("data-theme", "mocha");
+      }
+    })();
+  </script>
 </head>
 <body>
+  <a class="skip-link" href="#main">跳到正文</a>
   <div class="layout">
-    <aside class="sidebar">
-      <a class="brand" href="./index.html">HN Daily</a>
-      <p class="sidebar-desc">Hacker News 精选 + GitHub Trending 完整汇总</p>
-      <nav>
+    <aside class="sidebar" aria-label="站点导航">
+      <div class="brand-row">
+        <a class="brand" href="./index.html">
+          <span class="brand-mark" aria-hidden="true">猫</span>
+          <span>HN Daily</span>
+        </a>
+        <button type="button" class="theme-toggle" id="theme-toggle" aria-label="切换 Catppuccin 主题">
+          <span class="theme-icon" aria-hidden="true">◐</span>
+          <span class="theme-label">Mocha</span>
+        </button>
+      </div>
+      <p class="sidebar-desc">Catppuccin Userstyles · HN 精选 + GitHub Trending 完整汇总</p>
+      <nav aria-label="日报归档">
         <h2>归档</h2>
-        <ul class='archive-list'><li><a class="active" href="./index.html">2026-07-20</a></li></ul>
+        <ul class='archive-list'><li><a class="active" href="./index.html" aria-current="page">2026-07-20</a></li></ul>
       </nav>
-      <footer class="sidebar-foot">GitHub Pages · Actions 自动部署</footer>
+      <footer class="sidebar-foot">
+        <span class="flavor-badge">Catppuccin</span>
+        GitHub Pages · Actions
+      </footer>
     </aside>
-    <main class="content">
+    <main class="content" id="main">
       <section class='hero'>
-<p class='eyebrow'>Hacker News · GitHub Trending</p>
+<p class='eyebrow'>Catppuccin · Hacker News · GitHub Trending</p>
 <h1>2026-07-20 技术日报</h1>
 <p class='meta'>HN 14 篇 · Trending 20 项 · 生成于 2026-07-20 11:38:05 UTC</p>
+<div class='hero-pills' aria-hidden='true'><span class='pill peach'>Peach</span><span class='pill mauve'>Mauve</span><span class='pill blue'>Blue</span><span class='pill green'>Green</span></div>
 </section>
-<section id='hn'><h2>Hacker News 精选 <span class='count'>Top 14</span></h2>
+<section id='hn' aria-labelledby='hn-heading'><h2 id='hn-heading'><span class='dot hn'></span>Hacker News 精选 <span class='count'>Top 14</span></h2>
 <article class="card">
   <header class="card-head">
-    <span class="idx">1</span>
-    <div>
+    <span class="idx" aria-hidden="true">1</span>
+    <div class="card-title">
       <h3><a href="https://slcyber.io/research-center/exploit-brokers-pay-500000-for-a-wordpress-rce-i-found-one-with-gpt5-6/" target="_blank" rel="noopener noreferrer">Exploit brokers pay $500k for WordPress RCEs. I found one with GPT5.6 and $25</a></h3>
       <a class="origin" href="https://slcyber.io/research-center/exploit-brokers-pay-500000-for-a-wordpress-rce-i-found-one-with-gpt5-6/" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
     </div>
   </header>
   <dl class="summary">
-    <div><dt>核心</dt><dd>研究者用GPT5.6仅花25美元发现WordPress高危RCE漏洞，市场价50万美元。</dd></div>
-    <div><dt>要点</dt><dd><ul class='points'><li>使用GPT5.6 Sol Ultra定制多代理提示词分析源码</li><li>小时发现预认证RCE漏洞链</li><li>公开wp2shell工具供自查。</li></ul></dd></div>
-    <div><dt>亮点</dt><dd>AI以极低成本发现价值50万美元的零日漏洞，展示安全研究新范式。</dd></div>
-    <div><dt>适合</dt><dd><span class="tag">安全研究员；AI开发者</span></dd></div>
+    <div class="row row-core"><dt>核心</dt><dd>研究者用GPT5.6仅花25美元发现WordPress高危RCE漏洞，市场价50万美元。</dd></div>
+    <div class="row row-points"><dt>要点</dt><dd><ul class='points'><li>使用GPT5.6 Sol Ultra定制多代理提示词分析源码</li><li>小时发现预认证RCE漏洞链</li><li>公开wp2shell工具供自查。</li></ul></dd></div>
+    <div class="row row-spark"><dt>亮点</dt><dd>AI以极低成本发现价值50万美元的零日漏洞，展示安全研究新范式。</dd></div>
+    <div class="row row-fit"><dt>适合</dt><dd><span class="tag">安全研究员；AI开发者</span></dd></div>
   </dl>
 </article>
 
 
 <article class="card">
   <header class="card-head">
-    <span class="idx">2</span>
-    <div>
+    <span class="idx" aria-hidden="true">2</span>
+    <div class="card-title">
       <h3><a href="https://github.com/hgaiser/moonshine" target="_blank" rel="noopener noreferrer">Moonshine: Lets you stream games from your PC to any device running Moonlight</a></h3>
       <a class="origin" href="https://github.com/hgaiser/moonshine" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
     </div>
   </header>
   <dl class="summary">
-    <div><dt>核心</dt><dd>无法抓取正文，请直接点击链接查看。</dd></div>
-    <div><dt>要点</dt><dd>无；无；无</dd></div>
-    <div><dt>亮点</dt><dd>无</dd></div>
-    <div><dt>适合</dt><dd><span class="tag">通用</span></dd></div>
+    <div class="row row-core"><dt>核心</dt><dd>无法抓取正文，请直接点击链接查看。</dd></div>
+    <div class="row row-points"><dt>要点</dt><dd>无；无；无</dd></div>
+    <div class="row row-spark"><dt>亮点</dt><dd>无</dd></div>
+    <div class="row row-fit"><dt>适合</dt><dd><span class="tag">通用</span></dd></div>
   </dl>
 </article>
 
 
 <article class="card">
   <header class="card-head">
-    <span class="idx">3</span>
-    <div>
+    <span class="idx" aria-hidden="true">3</span>
+    <div class="card-title">
       <h3><a href="https://www.theregister.com/columnists/2026/07/20/airbus-takes-flight-from-aws-what-happens-next-is-critical/5274109" target="_blank" rel="noopener noreferrer">Airbus Takes Flight from AWS</a></h3>
       <a class="origin" href="https://www.theregister.com/columnists/2026/07/20/airbus-takes-flight-from-aws-what-happens-next-is-critical/5274109" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
     </div>
   </header>
   <dl class="summary">
-    <div><dt>核心</dt><dd>空客为数字主权将900应用迁至欧洲云服务</dd></div>
-    <div><dt>要点</dt><dd><ul class='points'><li>迁移900应用，70个关键系统优先</li><li>ERP/CRM/制造系统纳入主权云</li><li>供应链与AI面临微软依赖与自主挑战</li></ul></dd></div>
-    <div><dt>亮点</dt><dd>通过公开招标推动欧洲云服务市场形成</dd></div>
-    <div><dt>适合</dt><dd><span class="tag">云架构师与数字主权研究者</span></dd></div>
+    <div class="row row-core"><dt>核心</dt><dd>空客为数字主权将900应用迁至欧洲云服务</dd></div>
+    <div class="row row-points"><dt>要点</dt><dd><ul class='points'><li>迁移900应用，70个关键系统优先</li><li>ERP/CRM/制造系统纳入主权云</li><li>供应链与AI面临微软依赖与自主挑战</li></ul></dd></div>
+    <div class="row row-spark"><dt>亮点</dt><dd>通过公开招标推动欧洲云服务市场形成</dd></div>
+    <div class="row row-fit"><dt>适合</dt><dd><span class="tag">云架构师与数字主权研究者</span></dd></div>
   </dl>
 </article>
 
 
 <article class="card">
   <header class="card-head">
-    <span class="idx">4</span>
-    <div>
+    <span class="idx" aria-hidden="true">4</span>
+    <div class="card-title">
       <h3><a href="https://github.com/Saivineeth147/lora-speedrun" target="_blank" rel="noopener noreferrer">LoRA Speedrun – a public wall-clock leaderboard for fine-tuning techniques</a></h3>
       <a class="origin" href="https://github.com/Saivineeth147/lora-speedrun" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
     </div>
   </header>
   <dl class="summary">
-    <div><dt>核心</dt><dd>无法抓取正文，请直接点击链接查看。</dd></div>
-    <div><dt>要点</dt><dd>无；无；无</dd></div>
-    <div><dt>亮点</dt><dd>无</dd></div>
-    <div><dt>适合</dt><dd><span class="tag">通用</span></dd></div>
+    <div class="row row-core"><dt>核心</dt><dd>无法抓取正文，请直接点击链接查看。</dd></div>
+    <div class="row row-points"><dt>要点</dt><dd>无；无；无</dd></div>
+    <div class="row row-spark"><dt>亮点</dt><dd>无</dd></div>
+    <div class="row row-fit"><dt>适合</dt><dd><span class="tag">通用</span></dd></div>
   </dl>
 </article>
 
 
 <article class="card">
   <header class="card-head">
-    <span class="idx">5</span>
-    <div>
+    <span class="idx" aria-hidden="true">5</span>
+    <div class="card-title">
       <h3><a href="https://blog.andr2i.com/posts/2026-07-06-eliminating-go-bound-checks-with-unsafe" target="_blank" rel="noopener noreferrer">Eliminating Go bounds checks with unsafe</a></h3>
       <a class="origin" href="https://blog.andr2i.com/posts/2026-07-06-eliminating-go-bound-checks-with-unsafe" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
     </div>
   </header>
   <dl class="summary">
-    <div><dt>核心</dt><dd>使用unsafe指针算术消除Go边界检查，优化热路径性能。</dd></div>
-    <div><dt>要点</dt><dd><ul class='points'><li>边界检查消除减少指令分支，提升缓存效率</li><li>调整循环条件助编译器自动消除</li><li>unsafe指针算术手动消除无法处理的检查。</li></ul></dd></div>
-    <div><dt>亮点</dt><dd>unsafe技巧可消除编译器无法自动处理的边界检查，实现更深优化。</dd></div>
-    <div><dt>适合</dt><dd><span class="tag">Go后端工程师</span></dd></div>
+    <div class="row row-core"><dt>核心</dt><dd>使用unsafe指针算术消除Go边界检查，优化热路径性能。</dd></div>
+    <div class="row row-points"><dt>要点</dt><dd><ul class='points'><li>边界检查消除减少指令分支，提升缓存效率</li><li>调整循环条件助编译器自动消除</li><li>unsafe指针算术手动消除无法处理的检查。</li></ul></dd></div>
+    <div class="row row-spark"><dt>亮点</dt><dd>unsafe技巧可消除编译器无法自动处理的边界检查，实现更深优化。</dd></div>
+    <div class="row row-fit"><dt>适合</dt><dd><span class="tag">Go后端工程师</span></dd></div>
   </dl>
 </article>
 
 
 <article class="card">
   <header class="card-head">
-    <span class="idx">6</span>
-    <div>
+    <span class="idx" aria-hidden="true">6</span>
+    <div class="card-title">
       <h3><a href="https://simonwillison.net/2026/Jul/19/claude-code-in-bun-in-rust/" target="_blank" rel="noopener noreferrer">Claude Code uses Bun written in Rust now</a></h3>
       <a class="origin" href="https://simonwillison.net/2026/Jul/19/claude-code-in-bun-in-rust/" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
     </div>
   </header>
   <dl class="summary">
-    <div><dt>核心</dt><dd>Claude Code已采用Rust重写的Bun在生产环境运行。</dd></div>
-    <div><dt>要点</dt><dd><ul class='points'><li>v2.1.181版本后切换至Rust版Bun</li><li>通过strings命令及预加载脚本可验证</li><li>使用未正式发布的Bun v1.4.0 canary版本。</li></ul></dd></div>
-    <div><dt>亮点</dt><dd>Rust版Bun已大规模生产验证，Linux冷启动提升10%。</dd></div>
-    <div><dt>适合</dt><dd><span class="tag">后端与AI工程师</span></dd></div>
+    <div class="row row-core"><dt>核心</dt><dd>Claude Code已采用Rust重写的Bun在生产环境运行。</dd></div>
+    <div class="row row-points"><dt>要点</dt><dd><ul class='points'><li>v2.1.181版本后切换至Rust版Bun</li><li>通过strings命令及预加载脚本可验证</li><li>使用未正式发布的Bun v1.4.0 canary版本。</li></ul></dd></div>
+    <div class="row row-spark"><dt>亮点</dt><dd>Rust版Bun已大规模生产验证，Linux冷启动提升10%。</dd></div>
+    <div class="row row-fit"><dt>适合</dt><dd><span class="tag">后端与AI工程师</span></dd></div>
   </dl>
 </article>
 
 
 <article class="card">
   <header class="card-head">
-    <span class="idx">7</span>
-    <div>
+    <span class="idx" aria-hidden="true">7</span>
+    <div class="card-title">
       <h3><a href="https://spectrum.ieee.org/self-powered-trailers-freight-decarbonization" target="_blank" rel="noopener noreferrer">Self-Powered Trailers Promise Leaner Freight Runs</a></h3>
       <a class="origin" href="https://spectrum.ieee.org/self-powered-trailers-freight-decarbonization" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
     </div>
   </header>
   <dl class="summary">
-    <div><dt>核心</dt><dd>自驱动拖车通过电动化技术推动长途货运脱碳与运营精简。</dd></div>
-    <div><dt>要点</dt><dd><ul class='points'><li>研发电动半挂车以减少传统卡车依赖</li><li>提升长途货运能源效率</li><li>降低碳排放与运营成本。</li></ul></dd></div>
-    <div><dt>亮点</dt><dd>货运脱碳的关键技术路径之一。</dd></div>
-    <div><dt>适合</dt><dd><span class="tag">交通物流/环保工程师</span></dd></div>
+    <div class="row row-core"><dt>核心</dt><dd>自驱动拖车通过电动化技术推动长途货运脱碳与运营精简。</dd></div>
+    <div class="row row-points"><dt>要点</dt><dd><ul class='points'><li>研发电动半挂车以减少传统卡车依赖</li><li>提升长途货运能源效率</li><li>降低碳排放与运营成本。</li></ul></dd></div>
+    <div class="row row-spark"><dt>亮点</dt><dd>货运脱碳的关键技术路径之一。</dd></div>
+    <div class="row row-fit"><dt>适合</dt><dd><span class="tag">交通物流/环保工程师</span></dd></div>
   </dl>
 </article>
 
 
 <article class="card">
   <header class="card-head">
-    <span class="idx">8</span>
-    <div>
+    <span class="idx" aria-hidden="true">8</span>
+    <div class="card-title">
       <h3><a href="https://orionbrowser.com/" target="_blank" rel="noopener noreferrer">Orion Browser by Kagi</a></h3>
       <a class="origin" href="https://orionbrowser.com/" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
     </div>
   </header>
   <dl class="summary">
-    <div><dt>核心</dt><dd>基于WebKit的隐私优先浏览器，支持多平台扩展。</dd></div>
-    <div><dt>要点</dt><dd><ul class='points'><li>零遥测与内置广告拦截</li><li>兼容Safari/Chrome/Firefox扩展</li><li>覆盖macOS/iOS/Linux平台。</li></ul></dd></div>
-    <div><dt>亮点</dt><dd>唯一同时支持三大浏览器扩展的WebKit内核浏览器。</dd></div>
-    <div><dt>适合</dt><dd><span class="tag">隐私关注者/开发者/多平台用户</span></dd></div>
+    <div class="row row-core"><dt>核心</dt><dd>基于WebKit的隐私优先浏览器，支持多平台扩展。</dd></div>
+    <div class="row row-points"><dt>要点</dt><dd><ul class='points'><li>零遥测与内置广告拦截</li><li>兼容Safari/Chrome/Firefox扩展</li><li>覆盖macOS/iOS/Linux平台。</li></ul></dd></div>
+    <div class="row row-spark"><dt>亮点</dt><dd>唯一同时支持三大浏览器扩展的WebKit内核浏览器。</dd></div>
+    <div class="row row-fit"><dt>适合</dt><dd><span class="tag">隐私关注者/开发者/多平台用户</span></dd></div>
   </dl>
 </article>
 
 
 <article class="card">
   <header class="card-head">
-    <span class="idx">9</span>
-    <div>
+    <span class="idx" aria-hidden="true">9</span>
+    <div class="card-title">
       <h3><a href="https://chipweinberger.com/articles/20260719-hardware-is-not-so-hard" target="_blank" rel="noopener noreferrer">What I learned selling 2,500 MIDI recorders: Hardware is not so hard</a></h3>
       <a class="origin" href="https://chipweinberger.com/articles/20260719-hardware-is-not-so-hard" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
     </div>
   </header>
   <dl class="summary">
-    <div><dt>核心</dt><dd>硬件创业难度被高估，产品简化与合理规模是关键。</dd></div>
-    <div><dt>要点</dt><dd><ul class='points'><li>硬件实际难度低于预期，远低于软件复杂度</li><li>产品设计极度简化，仅25个通用件</li><li>实践建议聚焦供应链与成本控制。</li></ul></dd></div>
-    <div><dt>亮点</dt><dd>软件复杂度远超硬件，20万行代码耗时三年。</dd></div>
-    <div><dt>适合</dt><dd><span class="tag">硬件产品经理与创业者</span></dd></div>
+    <div class="row row-core"><dt>核心</dt><dd>硬件创业难度被高估，产品简化与合理规模是关键。</dd></div>
+    <div class="row row-points"><dt>要点</dt><dd><ul class='points'><li>硬件实际难度低于预期，远低于软件复杂度</li><li>产品设计极度简化，仅25个通用件</li><li>实践建议聚焦供应链与成本控制。</li></ul></dd></div>
+    <div class="row row-spark"><dt>亮点</dt><dd>软件复杂度远超硬件，20万行代码耗时三年。</dd></div>
+    <div class="row row-fit"><dt>适合</dt><dd><span class="tag">硬件产品经理与创业者</span></dd></div>
   </dl>
 </article>
 
 
 <article class="card">
   <header class="card-head">
-    <span class="idx">10</span>
-    <div>
+    <span class="idx" aria-hidden="true">10</span>
+    <div class="card-title">
       <h3><a href="https://robotics.xiaomi.com/xiaomi-robotics-1.html" target="_blank" rel="noopener noreferrer">Xiaomi-Robotics-1</a></h3>
       <a class="origin" href="https://robotics.xiaomi.com/xiaomi-robotics-1.html" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
     </div>
   </header>
   <dl class="summary">
-    <div><dt>核心</dt><dd>通过无实体预训练与后训练，实现机器人策略模型规模化扩展。</dd></div>
-    <div><dt>要点</dt><dd><ul class='points'><li>预训练使用10万小时无实体数据</li><li>后训练对齐真实机器人与指令</li><li>扩展行为可预测且未饱和。</li></ul></dd></div>
-    <div><dt>亮点</dt><dd>真实机器人成功率随预训练数据与模型规模持续提升。</dd></div>
-    <div><dt>适合</dt><dd><span class="tag">AI与机器人技术开发者</span></dd></div>
+    <div class="row row-core"><dt>核心</dt><dd>通过无实体预训练与后训练，实现机器人策略模型规模化扩展。</dd></div>
+    <div class="row row-points"><dt>要点</dt><dd><ul class='points'><li>预训练使用10万小时无实体数据</li><li>后训练对齐真实机器人与指令</li><li>扩展行为可预测且未饱和。</li></ul></dd></div>
+    <div class="row row-spark"><dt>亮点</dt><dd>真实机器人成功率随预训练数据与模型规模持续提升。</dd></div>
+    <div class="row row-fit"><dt>适合</dt><dd><span class="tag">AI与机器人技术开发者</span></dd></div>
   </dl>
 </article>
 
 
 <article class="card">
   <header class="card-head">
-    <span class="idx">11</span>
-    <div>
+    <span class="idx" aria-hidden="true">11</span>
+    <div class="card-title">
       <h3><a href="https://www.minecraft.net/en-us/article/minecraft-26-3-snapshot-4" target="_blank" rel="noopener noreferrer">Minecraft: Java Edition now uses SDL3</a></h3>
       <a class="origin" href="https://www.minecraft.net/en-us/article/minecraft-26-3-snapshot-4" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
     </div>
   </header>
   <dl class="summary">
-    <div><dt>核心</dt><dd>Minecraft Java版底层库从GLFW切换至SDL3。</dd></div>
-    <div><dt>要点</dt><dd><ul class='points'><li>采用SDL3管理窗口与输入</li><li>数据包版本111.0，战利品表支持注册引用</li><li>UI调整：物理键位、默认无边框全屏。</li></ul></dd></div>
-    <div><dt>亮点</dt><dd>采用SDL3实现更统一的跨平台输入与窗口管理。</dd></div>
-    <div><dt>适合</dt><dd><span class="tag">游戏开发者与模组制作者。</span></dd></div>
+    <div class="row row-core"><dt>核心</dt><dd>Minecraft Java版底层库从GLFW切换至SDL3。</dd></div>
+    <div class="row row-points"><dt>要点</dt><dd><ul class='points'><li>采用SDL3管理窗口与输入</li><li>数据包版本111.0，战利品表支持注册引用</li><li>UI调整：物理键位、默认无边框全屏。</li></ul></dd></div>
+    <div class="row row-spark"><dt>亮点</dt><dd>采用SDL3实现更统一的跨平台输入与窗口管理。</dd></div>
+    <div class="row row-fit"><dt>适合</dt><dd><span class="tag">游戏开发者与模组制作者。</span></dd></div>
   </dl>
 </article>
 
 
 <article class="card">
   <header class="card-head">
-    <span class="idx">12</span>
-    <div>
+    <span class="idx" aria-hidden="true">12</span>
+    <div class="card-title">
       <h3><a href="https://www.labrujulaverde.com/en/2026/07/sealed-tomb-of-a-high-official-or-priest-filled-with-paintings-and-inscriptions-discovered-on-luxors-west-bank/" target="_blank" rel="noopener noreferrer">Sealed tomb filled with paintings and inscriptions discovered in Egypt</a></h3>
       <a class="origin" href="https://www.labrujulaverde.com/en/2026/07/sealed-tomb-of-a-high-official-or-priest-filled-with-paintings-and-inscriptions-discovered-on-luxors-west-bank/" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
     </div>
   </header>
   <dl class="summary">
-    <div><dt>核心</dt><dd>埃及卢克索西岸发现密封墓穴，属新王国官员Paser，内有绘画铭文。</dd></div>
-    <div><dt>要点</dt><dd><ul class='points'><li>荷兰队在谢赫阿卜杜勒库尔纳地区发现</li><li>墓穴所有者Paser，铭文证实身份</li><li>建筑倒T形布局，年代属拉美西斯时期。</li></ul></dd></div>
-    <div><dt>亮点</dt><dd>密封墓穴保存完好，为古埃及社会结构研究提供新证据。</dd></div>
-    <div><dt>适合</dt><dd><span class="tag">考古与历史爱好者</span></dd></div>
+    <div class="row row-core"><dt>核心</dt><dd>埃及卢克索西岸发现密封墓穴，属新王国官员Paser，内有绘画铭文。</dd></div>
+    <div class="row row-points"><dt>要点</dt><dd><ul class='points'><li>荷兰队在谢赫阿卜杜勒库尔纳地区发现</li><li>墓穴所有者Paser，铭文证实身份</li><li>建筑倒T形布局，年代属拉美西斯时期。</li></ul></dd></div>
+    <div class="row row-spark"><dt>亮点</dt><dd>密封墓穴保存完好，为古埃及社会结构研究提供新证据。</dd></div>
+    <div class="row row-fit"><dt>适合</dt><dd><span class="tag">考古与历史爱好者</span></dd></div>
   </dl>
 </article>
 
 
 <article class="card">
   <header class="card-head">
-    <span class="idx">13</span>
-    <div>
+    <span class="idx" aria-hidden="true">13</span>
+    <div class="card-title">
       <h3><a href="https://smolnero.com/posts/the-zen-of-parallel-programming" target="_blank" rel="noopener noreferrer">The Zen of Parallel Programming</a></h3>
       <a class="origin" href="https://smolnero.com/posts/the-zen-of-parallel-programming" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
     </div>
   </header>
   <dl class="summary">
-    <div><dt>核心</dt><dd>将并行编程的协调之道类比于人的内在和谐与禅宗智慧。</dd></div>
-    <div><dt>要点</dt><dd><ul class='points'><li>多处理器不自动提升效率，关键在于任务分解与通信同步</li><li>人的内在冲突类似资源竞争，导致内耗与疲惫</li><li>诚实沟通是内在同步，能消除焦虑与burnout。</li></ul></dd></div>
-    <div><dt>亮点</dt><dd>以技术为镜，揭示“协调既有力量”的普世哲学。</dd></div>
-    <div><dt>适合</dt><dd><span class="tag">后端/系统架构/技术哲学爱好者</span></dd></div>
+    <div class="row row-core"><dt>核心</dt><dd>将并行编程的协调之道类比于人的内在和谐与禅宗智慧。</dd></div>
+    <div class="row row-points"><dt>要点</dt><dd><ul class='points'><li>多处理器不自动提升效率，关键在于任务分解与通信同步</li><li>人的内在冲突类似资源竞争，导致内耗与疲惫</li><li>诚实沟通是内在同步，能消除焦虑与burnout。</li></ul></dd></div>
+    <div class="row row-spark"><dt>亮点</dt><dd>以技术为镜，揭示“协调既有力量”的普世哲学。</dd></div>
+    <div class="row row-fit"><dt>适合</dt><dd><span class="tag">后端/系统架构/技术哲学爱好者</span></dd></div>
   </dl>
 </article>
 
 
 <article class="card">
   <header class="card-head">
-    <span class="idx">14</span>
-    <div>
+    <span class="idx" aria-hidden="true">14</span>
+    <div class="card-title">
       <h3><a href="https://hidden-phenomena.com/articles/rh" target="_blank" rel="noopener noreferrer">What does the Riemann zeta function have to do with the distribution of primes?</a></h3>
       <a class="origin" href="https://hidden-phenomena.com/articles/rh" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
     </div>
   </header>
   <dl class="summary">
-    <div><dt>核心</dt><dd>黎曼ζ函数通过欧拉乘积公式揭示素数分布规律。</dd></div>
-    <div><dt>要点</dt><dd><ul class='points'><li>素数无限性需量化分布</li><li>ζ函数定义及欧拉乘积分解</li><li>分解基于唯一分解定理。</li></ul></dd></div>
-    <div><dt>亮点</dt><dd>欧拉乘积公式直接关联ζ函数与素数分布。</dd></div>
-    <div><dt>适合</dt><dd><span class="tag">数论研究者；密码学工程师</span></dd></div>
+    <div class="row row-core"><dt>核心</dt><dd>黎曼ζ函数通过欧拉乘积公式揭示素数分布规律。</dd></div>
+    <div class="row row-points"><dt>要点</dt><dd><ul class='points'><li>素数无限性需量化分布</li><li>ζ函数定义及欧拉乘积分解</li><li>分解基于唯一分解定理。</li></ul></dd></div>
+    <div class="row row-spark"><dt>亮点</dt><dd>欧拉乘积公式直接关联ζ函数与素数分布。</dd></div>
+    <div class="row row-fit"><dt>适合</dt><dd><span class="tag">数论研究者；密码学工程师</span></dd></div>
   </dl>
 </article>
 </section>
 
-<section id="gh">
-  <h2>GitHub Trending <span class="count">Top 20</span></h2>
-  <div class="table-wrap">
+<section id="gh" aria-labelledby="gh-heading">
+  <h2 id="gh-heading"><span class="dot gh"></span>GitHub Trending <span class="count">Top 20</span></h2>
+  <div class="table-wrap" role="region" aria-label="GitHub Trending 列表" tabindex="0">
     <table>
-      <thead><tr><th>#</th><th>仓库</th><th>语言</th><th>Stars</th></tr></thead>
+      <thead><tr><th scope="col">#</th><th scope="col">仓库</th><th scope="col">语言</th><th scope="col">Stars</th></tr></thead>
       <tbody>
         
 <tr>
@@ -475,8 +507,9 @@
   </div>
 </section>
 
-      <footer class="page-foot">由 actions-HN001-HN-daily-agent 自动生成 · 内容汇总不拆分</footer>
+      <footer class="page-foot">由 actions-HN001-HN-daily-agent 自动生成 · 风格 Catppuccin</footer>
     </main>
   </div>
+  <script src="./theme.js" defer></script>
 </body>
 </html>

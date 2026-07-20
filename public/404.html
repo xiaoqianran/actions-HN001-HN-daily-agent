@@ -1,27 +1,59 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-theme="mocha">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>页面未找到</title>
-  <meta name="description" content="Hacker News + GitHub Trending 每日技术日报" />
+  <meta name="description" content="Hacker News + GitHub Trending 每日技术日报 · Catppuccin" />
+  <meta name="color-scheme" content="dark light" />
+  <meta name="theme-color" content="#1e1e2e" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="./styles.css" />
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem("ctp-theme");
+        if (!t) {
+          t = window.matchMedia("(prefers-color-scheme: light)").matches ? "latte" : "mocha";
+        }
+        document.documentElement.setAttribute("data-theme", t);
+      } catch (e) {
+        document.documentElement.setAttribute("data-theme", "mocha");
+      }
+    })();
+  </script>
 </head>
 <body>
+  <a class="skip-link" href="#main">跳到正文</a>
   <div class="layout">
-    <aside class="sidebar">
-      <a class="brand" href="./index.html">HN Daily</a>
-      <p class="sidebar-desc">Hacker News 精选 + GitHub Trending 完整汇总</p>
-      <nav>
+    <aside class="sidebar" aria-label="站点导航">
+      <div class="brand-row">
+        <a class="brand" href="./index.html">
+          <span class="brand-mark" aria-hidden="true">猫</span>
+          <span>HN Daily</span>
+        </a>
+        <button type="button" class="theme-toggle" id="theme-toggle" aria-label="切换 Catppuccin 主题">
+          <span class="theme-icon" aria-hidden="true">◐</span>
+          <span class="theme-label">Mocha</span>
+        </button>
+      </div>
+      <p class="sidebar-desc">Catppuccin Userstyles · HN 精选 + GitHub Trending 完整汇总</p>
+      <nav aria-label="日报归档">
         <h2>归档</h2>
         <ul class='archive-list'><li><a class="" href="./index.html">2026-07-20</a></li></ul>
       </nav>
-      <footer class="sidebar-foot">GitHub Pages · Actions 自动部署</footer>
+      <footer class="sidebar-foot">
+        <span class="flavor-badge">Catppuccin</span>
+        GitHub Pages · Actions
+      </footer>
     </aside>
-    <main class="content">
+    <main class="content" id="main">
       <h1>404</h1><p>页面不存在。<a href="./index.html">返回首页</a></p>
-      <footer class="page-foot">由 actions-HN001-HN-daily-agent 自动生成 · 内容汇总不拆分</footer>
+      <footer class="page-foot">由 actions-HN001-HN-daily-agent 自动生成 · 风格 Catppuccin</footer>
     </main>
   </div>
+  <script src="./theme.js" defer></script>
 </body>
 </html>
