@@ -195,3 +195,176 @@ class Summarizer:
             return normalize_summary(
                 f"核心 总结失败：{e}\n要点 无；无；无\n亮点 无\n适合 通用"
             )
+
+    def translate_repo_descriptions(self, repos):
+        """
+        将 GitHub Trending 仓库简介批量翻译为简体中文。
+
+        会写入：
+          - description: 简体中文简介（页面展示用）
+          - description_original: 原文简介（便于核对）
+
+        Args:
+            repos: list[dict]，每项含 name / description
+
+        Returns:
+            同一列表（原地更新后返回）
+        """
+        if not repos:
+            return repos
+
+        print(f"[翻译] 正在将 {len(repos)} 条 GitHub 简介译为简体中文...")
+
+        # 先备份原文
+        for repo in repos:
+            original = (repo.get("description") or "").strip() or "暂无描述"
+            repo["description_original"] = original
+
+        # 已是纯中文且无拉丁长句时，可直接沿用
+        need_idx = []
+        for i, repo in enumerate(repos):
+            original = repo["description_original"]
+            if original in ("暂无描述", "No description", "N/A", "-"):
+                repo["description"] = "暂无描述"
+                continue
+            if _looks_mostly_chinese(original):
+                repo["description"] = original
+                continue
+            need_idx.append(i)
+
+        if not need_idx:
+            print("[翻译] 全部简介已是中文或无需翻译")
+            return repos
+
+        # 分批翻译，避免单次 prompt 过长
+        batch_size = 10
+        for start in range(0, len(need_idx), batch_size):
+            batch = need_idx[start : start + batch_size]
+            translated = self._translate_batch(
+                [(i, repos[i]["name"], repos[i]["description_original"]) for i in batch]
+            )
+            for i, zh in translated.items():
+                repos[i]["description"] = zh
+            # 未成功解析的条目逐条补翻
+            for i in batch:
+                if i not in translated:
+                    repos[i]["description"] = self._translate_one(
+                        repos[i]["name"], repos[i]["description_original"]
+                    )
+
+        print("[翻译] GitHub 简介翻译完成")
+        return repos
+
+    def _translate_batch(self, items):
+        """
+        items: list[(index, name, description)]
+        returns: dict[index -> zh_text]
+        """
+        if not items:
+            return {}
+
+        lines = []
+        for seq, (idx, name, desc) in enumerate(items, 1):
+            safe_desc = re.sub(r"\s+", " ", desc)[:280]
+            lines.append(f"{seq}. [{name}] {safe_desc}")
+
+        prompt = (
+            "将下列 GitHub 仓库简介翻译成**简体中文**。\n"
+            "要求：\n"
+            "1. 只输出翻译，不要解释、不要思考过程、不要代码块\n"
+            "2. 每行格式严格为：序号|中文简介\n"
+            "3. 专有名词/项目名可保留英文\n"
+            "4. 保持简洁，一句到两句即可\n"
+            "5. 序号必须与输入一致\n\n"
+            "输入：\n" + "\n".join(lines)
+        )
+
+        try:
+            response = self.client.chat.completions.create(
+                model=self.model_name,
+                messages=[
+                    {
+                        "role": "system",
+                        "content": (
+                            "你是专业的技术文档译者。只输出简体中文翻译行，"
+                            "格式：序号|译文。禁止输出其它内容。"
+                        ),
+                    },
+                    {"role": "user", "content": prompt},
+                ],
+                stream=False,
+                max_tokens=2048,
+                temperature=0.2,
+            )
+            text = (response.choices[0].message.content or "").strip()
+            if not text:
+                return {}
+            return _parse_numbered_translations(text, items)
+        except Exception as e:
+            print(f"[翻译警告] 批量翻译失败: {e}")
+            return {}
+
+    def _translate_one(self, name, description):
+        """单条简介翻译；失败则回退原文"""
+        original = (description or "").strip() or "暂无描述"
+        if original == "暂无描述" or _looks_mostly_chinese(original):
+            return original
+
+        prompt = (
+            f"将下面的 GitHub 仓库简介翻译成简体中文，只输出译文一句：\n"
+            f"仓库：{name}\n"
+            f"简介：{original}"
+        )
+        try:
+            response = self.client.chat.completions.create(
+                model=self.model_name,
+                messages=[
+                    {
+                        "role": "system",
+                        "content": "只输出简体中文译文，不要解释。",
+                    },
+                    {"role": "user", "content": prompt},
+                ],
+                stream=False,
+                max_tokens=512,
+                temperature=0.2,
+            )
+            text = (response.choices[0].message.content or "").strip()
+            text = re.sub(r"^```.*?\n|\n```$", "", text).strip()
+            text = re.sub(r"\s+", " ", text)
+            if text:
+                return text[:200]
+        except Exception as e:
+            print(f"[翻译警告] 单条翻译失败 {name}: {e}")
+        return original
+
+
+def _looks_mostly_chinese(text: str) -> bool:
+    """粗判是否主要为中文（避免重复翻译）"""
+    if not text:
+        return False
+    chinese = len(re.findall(r"[\u4e00-\u9fff]", text))
+    latin = len(re.findall(r"[A-Za-z]", text))
+    return chinese >= 4 and chinese >= latin
+
+
+def _parse_numbered_translations(text: str, items):
+    """解析「序号|译文」行，映射回原始 index"""
+    # seq (1-based in batch) -> original index
+    seq_to_idx = {seq: idx for seq, (idx, _, _) in enumerate(items, 1)}
+    result = {}
+
+    for raw_line in text.splitlines():
+        line = raw_line.strip()
+        if not line:
+            continue
+        line = re.sub(r"^[-*•]\s*", "", line)
+        m = re.match(r"^(\d+)\s*[|｜.、:：\-]\s*(.+)$", line)
+        if not m:
+            continue
+        seq = int(m.group(1))
+        zh = m.group(2).strip().strip("`\"'")
+        zh = re.sub(r"\s+", " ", zh)
+        if seq in seq_to_idx and zh:
+            result[seq_to_idx[seq]] = zh[:200]
+    return result

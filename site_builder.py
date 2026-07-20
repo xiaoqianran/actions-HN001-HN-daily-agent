@@ -236,14 +236,19 @@ class SiteBuilder:
                 stars_s = f"{int(stars):,}"
             except (TypeError, ValueError):
                 stars_s = str(stars)
+            # 优先展示简体中文简介；原文保留为 title 悬停提示
             desc = (repo.get("description") or "")[:160]
+            original = (repo.get("description_original") or "").strip()
+            title_attr = ""
+            if original and original != desc:
+                title_attr = f' title="原文: {_esc(original[:200])}"'
             rows.append(
                 f"""
 <tr>
   <td class="num">{idx}</td>
   <td>
     <a class="repo" href="{_esc(repo.get('url') or '#')}" target="_blank" rel="noopener noreferrer">{_esc(repo.get('name') or '')}</a>
-    <div class="desc">{_esc(desc)}</div>
+    <div class="desc"{title_attr}>{_esc(desc)}</div>
   </td>
   <td class="lang">{_esc(repo.get('language') or '—')}</td>
   <td class="stars">★ {stars_s}</td>

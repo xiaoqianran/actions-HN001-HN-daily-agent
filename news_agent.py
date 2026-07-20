@@ -53,8 +53,10 @@ def main():
             # 3. 获取 HN 文章列表
             stories = hn_fetcher.get_top_stories(n=hn_top_count)
 
-            # 4. 获取 GitHub Trending 项目
+            # 4. 获取 GitHub Trending 项目，并将简介译为简体中文
             gh_repos = gh_fetcher.get_trending_repos(n=github_top_count)
+            if gh_repos:
+                summarizer.translate_repo_descriptions(gh_repos)
 
             digest_data = []
 

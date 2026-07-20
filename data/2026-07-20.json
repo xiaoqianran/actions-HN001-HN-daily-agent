@@ -79,142 +79,162 @@
     {
       "name": "rohitg00/ai-engineering-from-scratch",
       "url": "https://github.com/rohitg00/ai-engineering-from-scratch",
-      "description": "Learn it. Build it. Ship it for others.",
+      "description": "学习它。构建它。为他人交付它。",
       "stars": 5,
-      "language": "Python"
+      "language": "Python",
+      "description_original": "Learn it. Build it. Ship it for others."
     },
     {
       "name": "diegosouzapw/OmniRoute",
       "url": "https://github.com/diegosouzapw/OmniRoute",
-      "description": "Never stop coding. Free AI gateway: one endpoint, 160+ providers (50+ free), connect Claude Code, Codex, Cursor, Cline & Copilot to FREE Claude/GPT/Gemini. RTK+Caveman stacked compression saves 15-95% tokens, smart auto-fallback, MCP/A2A, multimodal APIs, Desktop/PWA.",
+      "description": "免费AI网关：一个端点连接160+提供商（50+免费），支持Claude Code、GPT等。RTK+Caveman压缩节省15-95% tokens，智能回退，MCP/A2A，多模态API，支持桌面/PWA。",
       "stars": 3,
-      "language": "TypeScript"
+      "language": "TypeScript",
+      "description_original": "Never stop coding. Free AI gateway: one endpoint, 160+ providers (50+ free), connect Claude Code, Codex, Cursor, Cline & Copilot to FREE Claude/GPT/Gemini. RTK+Caveman stacked compression saves 15-95% tokens, smart auto-fallback, MCP/A2A, multimodal APIs, Desktop/PWA."
     },
     {
       "name": "MoonshotAI/kimi-cli",
       "url": "https://github.com/MoonshotAI/kimi-cli",
-      "description": "Kimi Code CLI is your next CLI agent.",
+      "description": "Kimi Code CLI是你下一个CLI代理。",
       "stars": 5,
-      "language": "Python"
+      "language": "Python",
+      "description_original": "Kimi Code CLI is your next CLI agent."
     },
     {
       "name": "emilkowalski/skills",
       "url": "https://github.com/emilkowalski/skills",
-      "description": "Skills for Design Engineers.",
+      "description": "设计工程师的技能。",
       "stars": 3,
-      "language": "Unknown"
+      "language": "Unknown",
+      "description_original": "Skills for Design Engineers."
     },
     {
       "name": "ogulcancelik/herdr",
       "url": "https://github.com/ogulcancelik/herdr",
-      "description": "agent multiplexer that lives in your terminal.",
+      "description": "驻留在终端中的代理多路复用器。",
       "stars": 4,
-      "language": "Rust"
+      "language": "Rust",
+      "description_original": "agent multiplexer that lives in your terminal."
     },
     {
       "name": "HKUDS/Vibe-Trading",
       "url": "https://github.com/HKUDS/Vibe-Trading",
-      "description": "\"Vibe-Trading: Your Personal Trading Agent\"",
+      "description": "Vibe-Trading: 你的个人交易代理",
       "stars": 3,
-      "language": "Python"
+      "language": "Python",
+      "description_original": "\"Vibe-Trading: Your Personal Trading Agent\""
     },
     {
       "name": "MadsLorentzen/ai-job-search",
       "url": "https://github.com/MadsLorentzen/ai-job-search",
-      "description": "AI-powered job application framework built on Claude Code. Fork it, fill in your profile, and let Claude evaluate jobs, tailor CVs, write cover letters, and prepare you for interviews.",
+      "description": "基于Claude Code的AI驱动求职框架。复制它，填写你的资料，让Claude评估职位、定制简历、撰写求职信并为你面试做准备。",
       "stars": 3,
-      "language": "TypeScript"
+      "language": "TypeScript",
+      "description_original": "AI-powered job application framework built on Claude Code. Fork it, fill in your profile, and let Claude evaluate jobs, tailor CVs, write cover letters, and prepare you for interviews."
     },
     {
       "name": "iflytek/astron-rpa",
       "url": "https://github.com/iflytek/astron-rpa",
-      "description": "Agent-ready RPA suite with out-of-the-box automation tools. Built for individuals and enterprises.",
+      "description": "即用型自动化工具的代理就绪RPA套件。为个人和企业打造。",
       "stars": 4,
-      "language": "Java"
+      "language": "Java",
+      "description_original": "Agent-ready RPA suite with out-of-the-box automation tools. Built for individuals and enterprises."
     },
     {
       "name": "laoma2053/awesome-zhuiju-free",
       "url": "https://github.com/laoma2053/awesome-zhuiju-free",
       "description": "人工精选的免费无广告追剧资源导航，每日自动检测可用性。收录在线影视、影视APP、网盘搜索、磁力 BT、字幕、TVBox / 影视仓配置地址、IPTV 订阅源。开源，社区共同维护。",
       "stars": 4,
-      "language": "JavaScript"
+      "language": "JavaScript",
+      "description_original": "人工精选的免费无广告追剧资源导航，每日自动检测可用性。收录在线影视、影视APP、网盘搜索、磁力 BT、字幕、TVBox / 影视仓配置地址、IPTV 订阅源。开源，社区共同维护。"
     },
     {
       "name": "HKUDS/DeepTutor",
       "url": "https://github.com/HKUDS/DeepTutor",
-      "description": "DeepTutor: Lifelong Personalized Tutoring. https://deeptutor.info/.",
+      "description": "DeepTutor: 终身个性化辅导。https://deeptutor.info/。",
       "stars": 3,
-      "language": "Python"
+      "language": "Python",
+      "description_original": "DeepTutor: Lifelong Personalized Tutoring. https://deeptutor.info/."
     },
     {
       "name": "hoainho/img2threejs",
       "url": "https://github.com/hoainho/img2threejs",
-      "description": "Rebuild the object in a reference image as a code-only, procedural, quality-gated, animation-ready Three.js model. Token-efficient image-to-3D.",
+      "description": "将参考图像中的对象重建为纯代码、程序化、质量门控、动画就绪的Three.js模型。高效的图像转3D。",
       "stars": 3,
-      "language": "Python"
+      "language": "Python",
+      "description_original": "Rebuild the object in a reference image as a code-only, procedural, quality-gated, animation-ready Three.js model. Token-efficient image-to-3D."
     },
     {
       "name": "usestrix/strix",
       "url": "https://github.com/usestrix/strix",
-      "description": "Open-source AI penetration testing tool to find and fix your app’s vulnerabilities.",
+      "description": "开源AI渗透测试工具，可发现并修复应用漏洞。",
       "stars": 3,
-      "language": "Python"
+      "language": "Python",
+      "description_original": "Open-source AI penetration testing tool to find and fix your app’s vulnerabilities."
     },
     {
       "name": "stupside/castor",
       "url": "https://github.com/stupside/castor",
-      "description": "Point it at any web page and it finds the video, extracts the stream, transcodes it and casts in real time to your TV. It even burns subtitles….",
+      "description": "指向任意网页即可查找视频、提取流、转码并实时投射至电视，甚至能烧录字幕。",
       "stars": 3,
-      "language": "Go"
+      "language": "Go",
+      "description_original": "Point it at any web page and it finds the video, extracts the stream, transcodes it and casts in real time to your TV. It even burns subtitles…."
     },
     {
       "name": "coreyhaines31/marketingskills",
       "url": "https://github.com/coreyhaines31/marketingskills",
-      "description": "Marketing skills for Claude Code and AI agents. CRO, copywriting, SEO, analytics, and growth engineering.",
+      "description": "面向Claude Code和AI代理的营销技能，涵盖转化率优化、文案写作、SEO、数据分析与增长工程。",
       "stars": 2,
-      "language": "JavaScript"
+      "language": "JavaScript",
+      "description_original": "Marketing skills for Claude Code and AI agents. CRO, copywriting, SEO, analytics, and growth engineering."
     },
     {
       "name": "langchain-ai/openwiki",
       "url": "https://github.com/langchain-ai/openwiki",
       "description": "OpenWiki is a CLI that writes and maintains agent documentation for your codebase.",
       "stars": 2,
-      "language": "TypeScript"
+      "language": "TypeScript",
+      "description_original": "OpenWiki is a CLI that writes and maintains agent documentation for your codebase."
     },
     {
       "name": "dramaclaw/dramaclaw",
       "url": "https://github.com/dramaclaw/dramaclaw",
-      "description": "A general-purpose AIGC video engine: script to finished film in one pipeline — dramas, ads, product videos, otome games, and more. | 通用 AIGC 视频引擎 —— 从剧本到成片一条流水线，漫剧、广告、电商、乙游皆可",
+      "description": "通用AIGC视频引擎——从剧本到成片一条流水线，可制作漫剧、广告、电商视频及乙女游戏等多种内容。",
       "stars": 2,
-      "language": "TypeScript"
+      "language": "TypeScript",
+      "description_original": "A general-purpose AIGC video engine: script to finished film in one pipeline — dramas, ads, product videos, otome games, and more. | 通用 AIGC 视频引擎 —— 从剧本到成片一条流水线，漫剧、广告、电商、乙游皆可"
     },
     {
       "name": "1jehuang/jcode",
       "url": "https://github.com/1jehuang/jcode",
-      "description": "Coding Agent Harness",
+      "description": "编码代理框架",
       "stars": 2,
-      "language": "Rust"
+      "language": "Rust",
+      "description_original": "Coding Agent Harness"
     },
     {
       "name": "MatheuZSecurity/Furtex",
       "url": "https://github.com/MatheuZSecurity/Furtex",
-      "description": "Post-exploitation and evasion research toolkit for Linux.",
+      "description": "用于Linux的后渗透与规避研究工具集。",
       "stars": 2,
-      "language": "C"
+      "language": "C",
+      "description_original": "Post-exploitation and evasion research toolkit for Linux."
     },
     {
       "name": "xuanyustudio/LocalMiniDrama",
       "url": "https://github.com/xuanyustudio/LocalMiniDrama",
       "description": "🎬 seedance2接入  开源本地 AI 短剧 & 漫剧生成工具 —— 从故事到成片一站式完成，数据不出本机，短剧工作流管理平台，高灵活度，AI真人剧，AI漫剧本地搞定。 Open-source local AI short drama maker: story → storyboard → video, fully offline, your data stays yours. 纳米流水线",
       "stars": 2,
-      "language": "JavaScript"
+      "language": "JavaScript",
+      "description_original": "🎬 seedance2接入  开源本地 AI 短剧 & 漫剧生成工具 —— 从故事到成片一站式完成，数据不出本机，短剧工作流管理平台，高灵活度，AI真人剧，AI漫剧本地搞定。 Open-source local AI short drama maker: story → storyboard → video, fully offline, your data stays yours. 纳米流水线"
     },
     {
       "name": "kunchenguid/firstmate",
       "url": "https://github.com/kunchenguid/firstmate",
-      "description": "Talk to one agent. Ship with a crew.",
+      "description": "与一个智能体对话。与团队协同发布。",
       "stars": 2,
-      "language": "Shell"
+      "language": "Shell",
+      "description_original": "Talk to one agent. Ship with a crew."
     }
   ]
 }
