@@ -135,7 +135,8 @@ python test_hn_fetcher.py
 
 | 技术 | 版本/说明 | 用途 |
 |------|----------|------|
-| **Python** | 3.9+ | 主要编程语言 |
+| **Python** | 3.12 | 主要编程语言（Actions 指定 3.12） |
+| **Node.js** | 22 | Actions 运行时（setup-node，供工具链使用） |
 | **OpenAI SDK** | 最新版 | OpenAI 兼容客户端（NVIDIA NIM 等） |
 | **NVIDIA NIM** | 默认 | AI 文章摘要（可换其他兼容接口） |
 | **Jina Reader** | - | 网页内容提取 |
