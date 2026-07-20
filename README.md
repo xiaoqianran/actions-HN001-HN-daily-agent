@@ -4,7 +4,7 @@
 ![Forks](https://img.shields.io/github/forks/GeYugong/HN-daily-agent?style=social)
 ![License](https://img.shields.io/badge/License-MIT-yellow.svg)
 ![Python](https://img.shields.io/badge/Python-3.9+-blue.svg)
-![DeepSeek](https://img.shields.io/badge/AI-DeepSeek-critical)
+![NVIDIA NIM](https://img.shields.io/badge/AI-NVIDIA%20NIM-76B900)
 
 > 一个运行在 GitHub Actions 上的 AI 智能体，每天早上 6:00 自动抓取 Hacker News 热门文章和 GitHub Trending 项目，生成中文简报并推送至你的微信。
 
@@ -14,7 +14,7 @@
 
 - **自动抓取**：每天定时获取 Hacker News Top 榜单和 GitHub Trending 热门项目
 - **智能去广**：使用 Jina Reader 提取纯净网页内容
-- **深度总结**：调用 DeepSeek API 生成高质量中文技术简报
+- **深度总结**：调用 OpenAI 兼容 API（默认 NVIDIA NIM）生成高质量中文技术简报
 - **微信推送**：通过 PushPlus 推送 Markdown 格式日报到你的微信
 - **零成本**：完全基于 GitHub Actions 免费运行，无需服务器
 - **模块化架构**：代码结构清晰，易于维护和扩展
@@ -58,22 +58,31 @@
 
 | 服务 | 用途 | 获取链接 |
 |------|------|----------|
-| **DeepSeek** | AI 文章摘要 | [platform.deepseek.com](https://platform.deepseek.com/) |
+| **NVIDIA NIM**（或任意 OpenAI 兼容接口） | AI 文章摘要 | [build.nvidia.com](https://build.nvidia.com/) |
 | **PushPlus** | 微信消息推送 | [pushplus.plus](http://www.pushplus.plus/) |
 
-> 💡 **提示**：DeepSeek 需要充值少量金额（约 ¥1 即可测试），PushPlus 有免费额度（每天 100 条）。
+> 💡 **提示**：默认使用 NVIDIA NIM 的 OpenAI 兼容接口；也可换成 DeepSeek 等。PushPlus 有免费额度（每天 100 条）。
 
-### 3️⃣ 配置 GitHub Secrets
+### 3️⃣ 配置 GitHub Secrets / Variables
 
 在你的 Fork 仓库页面：
 
 1. 进入 `Settings` → `Secrets and variables` → `Actions`
-2. 点击 `New repository secret`，添加以下两个变量：
+2. **Secrets** 添加：
 
 ```
-DEEPSEEK_API_KEY = sk-xxxxxxxxxxxxxxxx
-PUSHPLUS_TOKEN   = xxxxxxxxxxxxxxxxxx
+OPENAI_API_KEY  = nvapi-xxxxxxxx        # 或任意 OpenAI 兼容 Key
+PUSHPLUS_TOKEN  = xxxxxxxxxxxxxxxxxx
 ```
+
+3. **Variables**（可选，有默认值）添加：
+
+```
+OPENAI_BASE_URL = https://integrate.api.nvidia.com/v1
+MODEL_NAME      = stepfun-ai/step-3.5-flash
+```
+
+> 兼容旧配置：若未设置 `OPENAI_API_KEY`，会回退读取 `DEEPSEEK_API_KEY`。
 
 ### 4️⃣ 启用 GitHub Actions
 
@@ -107,8 +116,10 @@ SUMMARY_PROMPT_TEMPLATE=请阅读以下内容并给出中文摘要。标题：{t
 # 1. 安装依赖
 pip install -r requirements.txt
 
-# 2. 配置环境变量（创建 .env 文件）
-DEEPSEEK_API_KEY=your_key_here
+# 2. 配置环境变量（创建 .env 文件，可参考 .env.example）
+OPENAI_API_KEY=nvapi-xxxxxxxx
+OPENAI_BASE_URL=https://integrate.api.nvidia.com/v1
+MODEL_NAME=stepfun-ai/step-3.5-flash
 PUSHPLUS_TOKEN=your_token_here
 
 # 3. 运行主程序
@@ -125,8 +136,8 @@ python test_hn_fetcher.py
 | 技术 | 版本/说明 | 用途 |
 |------|----------|------|
 | **Python** | 3.9+ | 主要编程语言 |
-| **OpenAI SDK** | 最新版 | DeepSeek API 兼容客户端 |
-| **DeepSeek** | - | AI 文章摘要生成 |
+| **OpenAI SDK** | 最新版 | OpenAI 兼容客户端（NVIDIA NIM 等） |
+| **NVIDIA NIM** | 默认 | AI 文章摘要（可换其他兼容接口） |
 | **Jina Reader** | - | 网页内容提取 |
 | **httpx** | - | 异步 HTTP 客户端 |
 | **GitHub Actions** | - | 自动化调度 |
@@ -141,7 +152,7 @@ python test_hn_fetcher.py
 ├── config.py                # 环境配置和凭证管理
 ├── hn_fetcher.py            # Hacker News 抓取模块
 ├── github_trending.py       # GitHub Trending 抓取模块
-├── summarizer.py            # DeepSeek 文章摘要模块
+├── summarizer.py            # OpenAI 兼容文章摘要模块
 ├── notifier.py              # PushPlus 微信推送模块
 ├── news_agent.py            # 主程序入口（编排所有模块）
 ├── test_hn_fetcher.py       # HN 抓取模块单元测试
@@ -178,7 +189,7 @@ schedule:
 - `HN_TOP_COUNT`（默认 5）
 - `GITHUB_TOP_COUNT`（默认 5）
 
-⚠️ **注意**：增加数量会消耗更多 DeepSeek API 额度，也可能导致推送超时。
+⚠️ **注意**：增加数量会消耗更多 LLM API 额度，也可能导致推送超时。
 
 ### Q: 可以自定义 AI 总结提示词吗？
 
@@ -190,12 +201,13 @@ schedule:
 
 可选模板见：[`SUMMARY_PROMPT_TEMPLATES.md`](./SUMMARY_PROMPT_TEMPLATES.md)。
 
-### Q: DeepSeek API 额度不够怎么办？
+### Q: 如何切换其他 OpenAI 兼容接口？
 
-**A:** 可以替换为其他兼容 OpenAI 格式的 API：
+**A:** 无需改代码，只改环境变量 / GitHub 配置即可：
 
-1. 修改 `summarizer.py` 中的 `base_url`
-2. 更新 GitHub Secrets 中的 `DEEPSEEK_API_KEY`
+1. Secrets：`OPENAI_API_KEY` = 你的 Key
+2. Variables：`OPENAI_BASE_URL` = 接口地址（如 `https://api.deepseek.com`）
+3. Variables：`MODEL_NAME` = 模型 ID（如 `deepseek-chat` 或 `stepfun-ai/step-3.5-flash`）
 
 ### Q: GitHub Actions 失败了怎么办？
 

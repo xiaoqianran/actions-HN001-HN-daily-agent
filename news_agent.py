@@ -6,9 +6,11 @@ import time
 from config import (
     DEFAULT_SUMMARY_PROMPT_TEMPLATE,
     DEFAULT_TOP_COUNT,
-    get_deepseek_key,
     get_github_top_count,
     get_hn_top_count,
+    get_model_name,
+    get_openai_api_key,
+    get_openai_base_url,
     get_pushplus_token,
     get_summary_prompt_template,
 )
@@ -23,12 +25,17 @@ def main():
     print("[系统] Agent 开始工作...")
 
     try:
-        # 1. 初始化配置
-        api_key = get_deepseek_key()
+        # 1. 初始化配置（OpenAI 兼容接口：NVIDIA NIM 等）
+        api_key = get_openai_api_key()
+        base_url = get_openai_base_url()
+        model_name = get_model_name()
         pushplus_token = get_pushplus_token()
         hn_top_count = get_hn_top_count()
         github_top_count = get_github_top_count()
         prompt_template = get_summary_prompt_template()
+
+        print(f"[配置] OPENAI_BASE_URL={base_url}")
+        print(f"[配置] MODEL_NAME={model_name}")
 
         if "{title}" not in prompt_template or "{content}" not in prompt_template:
             print("[配置警告] SUMMARY_PROMPT_TEMPLATE 必须包含 {title} 和 {content}，已回退默认提示词。")
@@ -45,7 +52,12 @@ def main():
         gh_fetcher = GitHubTrendingFetcher()
 
         # 使用 context manager 确保 Summarizer 资源正确释放
-        with Summarizer(api_key, prompt_template) as summarizer:
+        with Summarizer(
+            api_key,
+            prompt_template,
+            base_url=base_url,
+            model_name=model_name,
+        ) as summarizer:
             notifier = WeChatNotifier(pushplus_token)
 
             # 3. 获取 HN 文章列表

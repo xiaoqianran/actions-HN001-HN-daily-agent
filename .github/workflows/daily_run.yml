@@ -37,8 +37,11 @@ jobs:
           
       - name: Run Agent
         env:
-          # 这里引用 GitHub 仓库里存的密钥
-          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+          # OpenAI 兼容接口（NVIDIA NIM / DeepSeek 等）
+          # 优先 OPENAI_API_KEY；未设置时回退 DEEPSEEK_API_KEY 以兼容旧配置
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY || secrets.DEEPSEEK_API_KEY }}
+          OPENAI_BASE_URL: ${{ vars.OPENAI_BASE_URL || 'https://integrate.api.nvidia.com/v1' }}
+          MODEL_NAME: ${{ vars.MODEL_NAME || 'stepfun-ai/step-3.5-flash' }}
           PUSHPLUS_TOKEN: ${{ secrets.PUSHPLUS_TOKEN }}
           HN_TOP_COUNT: ${{ github.event.inputs.hn_top_count || vars.HN_TOP_COUNT }}
           GITHUB_TOP_COUNT: ${{ github.event.inputs.github_top_count || vars.GITHUB_TOP_COUNT }}

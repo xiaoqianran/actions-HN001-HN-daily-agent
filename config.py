@@ -14,6 +14,10 @@ _NO_PROXY: Dict[str, Optional[str]] = {"http": None, "https": None}
 
 DEFAULT_TOP_COUNT = 5
 
+# OpenAI 兼容接口默认值（NVIDIA NIM）
+DEFAULT_OPENAI_BASE_URL = "https://integrate.api.nvidia.com/v1"
+DEFAULT_MODEL_NAME = "stepfun-ai/step-3.5-flash"
+
 DEFAULT_SUMMARY_PROMPT_TEMPLATE = """
 请为 Hacker News 的热门文章撰写微型简报。
 标题: {title}
@@ -26,12 +30,33 @@ DEFAULT_SUMMARY_PROMPT_TEMPLATE = """
 """.strip()
 
 
-def get_deepseek_key() -> str:
-    """获取 DeepSeek API Key"""
-    key = os.getenv("DEEPSEEK_API_KEY")
+def get_openai_api_key() -> str:
+    """获取 OpenAI 兼容接口 API Key（优先 OPENAI_API_KEY，兼容 DEEPSEEK_API_KEY）"""
+    key = os.getenv("OPENAI_API_KEY") or os.getenv("DEEPSEEK_API_KEY")
     if not key:
-        raise ValueError("环境变量 DEEPSEEK_API_KEY 未设置")
+        raise ValueError("环境变量 OPENAI_API_KEY（或 DEEPSEEK_API_KEY）未设置")
     return key
+
+
+def get_openai_base_url() -> str:
+    """获取 OpenAI 兼容接口 Base URL"""
+    url = os.getenv("OPENAI_BASE_URL")
+    if url and url.strip():
+        return url.strip().rstrip("/")
+    return DEFAULT_OPENAI_BASE_URL
+
+
+def get_model_name() -> str:
+    """获取 LLM 模型名称"""
+    model = os.getenv("MODEL_NAME")
+    if model and model.strip():
+        return model.strip()
+    return DEFAULT_MODEL_NAME
+
+
+def get_deepseek_key() -> str:
+    """兼容旧接口：等价于 get_openai_api_key()"""
+    return get_openai_api_key()
 
 
 def get_pushplus_token() -> str:
