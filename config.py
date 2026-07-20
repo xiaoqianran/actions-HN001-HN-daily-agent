@@ -78,11 +78,11 @@ def get_deepseek_key() -> str:
 
 
 def get_pushplus_token() -> str:
-    """获取 PushPlus Token"""
-    token = os.getenv("PUSHPLUS_TOKEN")
-    if not token:
-        raise ValueError("环境变量 PUSHPLUS_TOKEN 未设置")
-    return token
+    """
+    已弃用：日报改为 GitHub Pages 发布，不再依赖 PushPlus。
+    保留函数仅为兼容旧调用；未设置时返回空字符串。
+    """
+    return (os.getenv("PUSHPLUS_TOKEN") or "").strip()
 
 
 def get_no_proxy() -> Dict[str, Optional[str]]:

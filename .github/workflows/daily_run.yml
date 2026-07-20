@@ -4,7 +4,6 @@ on:
   schedule:
     # 每天 UTC 时间 22:00 运行 (对应北京时间早上 6:00)
     - cron: '0 22 * * *'
-  # 允许你手动点击按钮触发测试
   workflow_dispatch:
     inputs:
       hn_top_count:
@@ -17,13 +16,28 @@ on:
         description: "摘要提示词模板（可选，需包含 {title} 和 {content}）"
         required: false
 
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages-digest
+  cancel-in-progress: false
+
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          # 需要历史 data/ 归档
+          fetch-depth: 0
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
@@ -39,25 +53,44 @@ jobs:
       - name: Show runtime versions
         run: |
           echo "node: $(node -v)"
-          echo "npm:  $(npm -v)"
           echo "python: $(python --version)"
-          echo "pip: $(pip --version)"
 
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Run Agent
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Run Agent (fetch + summarize + build site)
         env:
-          # OpenAI 兼容接口（NVIDIA NIM / DeepSeek 等）
-          # 优先 OPENAI_API_KEY；未设置时回退 DEEPSEEK_API_KEY 以兼容旧配置
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY || secrets.DEEPSEEK_API_KEY }}
           OPENAI_BASE_URL: ${{ vars.OPENAI_BASE_URL || 'https://integrate.api.nvidia.com/v1' }}
           MODEL_NAME: ${{ vars.MODEL_NAME || 'stepfun-ai/step-3.5-flash' }}
-          PUSHPLUS_TOKEN: ${{ secrets.PUSHPLUS_TOKEN }}
           HN_TOP_COUNT: ${{ github.event.inputs.hn_top_count || vars.HN_TOP_COUNT || '15' }}
           # GitHub 禁止 Variables 名以 GITHUB_ 开头，故仓库变量用 GH_TOP_COUNT
           GITHUB_TOP_COUNT: ${{ github.event.inputs.github_top_count || vars.GH_TOP_COUNT || '20' }}
           SUMMARY_PROMPT_TEMPLATE: ${{ github.event.inputs.summary_prompt_template || vars.SUMMARY_PROMPT_TEMPLATE }}
         run: python news_agent.py
+
+      - name: Commit digest data and site
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data public
+          if git diff --staged --quiet; then
+            echo "No site changes to commit"
+          else
+            git commit -m "chore(site): publish digest $(date -u +%F)"
+            git push
+          fi
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

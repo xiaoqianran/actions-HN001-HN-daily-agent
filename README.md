@@ -1,247 +1,87 @@
 # Hacker News Daily Digest (AI Agent)
 
-![Stars](https://img.shields.io/github/stars/GeYugong/HN-daily-agent?style=social)
-![Forks](https://img.shields.io/github/forks/GeYugong/HN-daily-agent?style=social)
-![License](https://img.shields.io/badge/License-MIT-yellow.svg)
-![Python](https://img.shields.io/badge/Python-3.9+-blue.svg)
+![Python](https://img.shields.io/badge/Python-3.12-blue.svg)
+![Node](https://img.shields.io/badge/Node-22-green.svg)
 ![NVIDIA NIM](https://img.shields.io/badge/AI-NVIDIA%20NIM-76B900)
+![Pages](https://img.shields.io/badge/GitHub%20Pages-Actions-222)
 
-> 一个运行在 GitHub Actions 上的 AI 智能体，每天早上 6:00 自动抓取 Hacker News 热门文章和 GitHub Trending 项目，生成中文简报并推送至你的微信。
+> 运行在 GitHub Actions 上的 AI 日报：抓取 Hacker News + GitHub Trending，生成中文结构化摘要，**完整汇总**后部署到 **GitHub Pages**。
 
-无需服务器，完全免费，开箱即用。
+站点（部署成功后）：  
+https://xiaoqianran.github.io/actions-HN001-HN-daily-agent/
 
 ## ✨ 特性
 
-- **自动抓取**：每天定时获取 Hacker News Top 榜单和 GitHub Trending 热门项目
-- **智能去广**：使用 Jina Reader 提取纯净网页内容
-- **深度总结**：调用 OpenAI 兼容 API（默认 NVIDIA NIM）生成高质量中文技术简报
-- **微信推送**：通过 PushPlus 推送 Markdown 格式日报到你的微信
-- **零成本**：完全基于 GitHub Actions 免费运行，无需服务器
-- **模块化架构**：代码结构清晰，易于维护和扩展
-
-## 📸 推送效果示例
-
-每日报告包含以下内容：
-
-```
-📅 HN 每日简报 | 2025-01-08
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📰 Hacker News Top 5
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-1. [文章标题]
-   📝 AI摘要：文章的核心内容总结...
-   🔗 原文链接
-
-2. [另一篇文章]
-   ...
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🔥 GitHub Trending
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-1. [repo-name] - stars数
-   📝 项目简介...
-```
-
+- **自动抓取**：定时获取 HN 热门与 GitHub Trending
+- **智能去广**：Jina Reader 提取正文
+- **结构化摘要**：核心 / 要点 / 亮点 / 适合（OpenAI 兼容接口，默认 NVIDIA NIM）
+- **完整汇总**：HN + Trending 同一份日报，不拆分、不推送微信
+- **GitHub Pages**：由 Actions 构建并部署静态站，支持按日归档
+- **零服务器**：完全跑在 GitHub Actions
 
 ## 🚀 快速开始
 
-你不需要写任何代码，只需要 Fork 本项目并配置 API Key。
+### 1. Secrets / Variables
 
-### 1️⃣ Fork 本仓库
-
-点击右上角的 **Fork** 按钮，将项目复刻到你的 GitHub 账号下。
-
-### 2️⃣ 获取必要的密钥
-
-| 服务 | 用途 | 获取链接 |
-|------|------|----------|
-| **NVIDIA NIM**（或任意 OpenAI 兼容接口） | AI 文章摘要 | [build.nvidia.com](https://build.nvidia.com/) |
-| **PushPlus** | 微信消息推送 | [pushplus.plus](http://www.pushplus.plus/) |
-
-> 💡 **提示**：默认使用 NVIDIA NIM 的 OpenAI 兼容接口；也可换成 DeepSeek 等。PushPlus 有免费额度（每天 100 条）。
-
-### 3️⃣ 配置 GitHub Secrets / Variables
-
-在你的 Fork 仓库页面：
-
-1. 进入 `Settings` → `Secrets and variables` → `Actions`
-2. **Secrets** 添加：
+**Secrets**
 
 ```
-OPENAI_API_KEY  = nvapi-xxxxxxxx        # 或任意 OpenAI 兼容 Key
-PUSHPLUS_TOKEN  = xxxxxxxxxxxxxxxxxx
+OPENAI_API_KEY = nvapi-xxxxxxxx
 ```
 
-3. **Variables**（可选，有默认值）添加：
+**Variables**（可选）
 
 ```
 OPENAI_BASE_URL = https://integrate.api.nvidia.com/v1
 MODEL_NAME      = stepfun-ai/step-3.5-flash
+HN_TOP_COUNT    = 15
+GH_TOP_COUNT    = 20
 ```
 
-> 兼容旧配置：若未设置 `OPENAI_API_KEY`，会回退读取 `DEEPSEEK_API_KEY`。
+> 仓库 Variable 名不能以 `GITHUB_` 开头，故 Trending 数量用 `GH_TOP_COUNT`。
 
-### 4️⃣ 启用 GitHub Actions
+### 2. 启用 Pages（Actions）
 
-1. 点击仓库上方的 `Actions` 标签
-2. 如果看到警告，点击 **"I understand my workflows, go ahead and enable them"**
-3. 点击左侧 `Daily HN Digest` → `Run workflow` 手动测试一次（首次建议保持默认参数）
+仓库 `Settings` → `Pages` → **Source** 选择 **GitHub Actions**。  
+本仓库 workflow 已使用 `actions/deploy-pages`，首次 run 成功后站点可用。
 
-🎉 完成！以后每天 **北京时间 06:00**，它会自动运行并推送简报到你的微信。
+### 3. 运行
 
-### 5️⃣ 首次默认运行完成后（可选）自定义配置
+Actions → **Daily HN Digest** → **Run workflow**  
+或等待每天 UTC 22:00（北京时间 06:00）定时任务。
 
-首次按默认参数（Top 5 + 默认提示词）运行完成后，推送消息末尾会提醒你可自定义，无需改代码。
+## 📂 产物结构
 
-你可以在 `Settings` → `Secrets and variables` → `Actions` → `Variables` 新建：
-
-```bash
-HN_TOP_COUNT=15
-GH_TOP_COUNT=20
-SUMMARY_PROMPT_TEMPLATE=请阅读以下内容并给出中文摘要。标题：{title}\n正文：{content}\n要求：先一句话结论，再列2-4条关键点。
+```
+data/YYYY-MM-DD.json     # 当日原始汇总数据（入库/归档）
+public/
+  index.html             # 最新日报
+  styles.css
+  archive/YYYY-MM-DD.html
 ```
 
-> `SUMMARY_PROMPT_TEMPLATE` 必须包含 `{title}` 和 `{content}` 这两个占位符。
->
-> 可直接参考并复制模板：[`SUMMARY_PROMPT_TEMPLATES.md`](./SUMMARY_PROMPT_TEMPLATES.md)
+流程：抓取 → 摘要 → **写入 data + 重建 public** → 提交 → **Deploy Pages**。
 
-## 💻 本地开发测试
-
-如果需要在本地运行或调试：
+## 💻 本地运行
 
 ```bash
-# 1. 安装依赖
 pip install -r requirements.txt
-
-# 2. 配置环境变量（创建 .env 文件，可参考 .env.example）
-OPENAI_API_KEY=nvapi-xxxxxxxx
-OPENAI_BASE_URL=https://integrate.api.nvidia.com/v1
-MODEL_NAME=stepfun-ai/step-3.5-flash
-PUSHPLUS_TOKEN=your_token_here
-
-# 3. 运行主程序
-python news_agent.py
-
-# 4. 运行测试
-python test_hn_fetcher.py
+cp .env.example .env   # 填入 OPENAI_API_KEY 等
+python news_agent.py   # 生成 data/ 与 public/
 ```
 
-> ⚠️ **注意**：本地运行时会自动跳过系统代理设置。如果遇到网络问题，请检查网络连接。
+本地预览：用浏览器打开 `public/index.html`。
 
 ## 🛠 技术栈
 
-| 技术 | 版本/说明 | 用途 |
-|------|----------|------|
-| **Python** | 3.12 | 主要编程语言（Actions 指定 3.12） |
-| **Node.js** | 22 | Actions 运行时（setup-node，供工具链使用） |
-| **OpenAI SDK** | 最新版 | OpenAI 兼容客户端（NVIDIA NIM 等） |
-| **NVIDIA NIM** | 默认 | AI 文章摘要（可换其他兼容接口） |
-| **Jina Reader** | - | 网页内容提取 |
-| **httpx** | - | 异步 HTTP 客户端 |
-| **GitHub Actions** | - | 自动化调度 |
+| 技术 | 说明 |
+|------|------|
+| Python 3.12 | Agent 与站点生成 |
+| Node 22 | Actions 工具链 |
+| OpenAI SDK | 兼容 NIM 等接口 |
+| GitHub Pages | `configure-pages` + `upload-pages-artifact` + `deploy-pages` |
 
-## 📁 项目结构
+## ❓ 说明
 
-```
-.
-├── .github/
-│   └── workflows/
-│       └── daily_run.yml    # GitHub Actions 工作流配置
-├── config.py                # 环境配置和凭证管理
-├── hn_fetcher.py            # Hacker News 抓取模块
-├── github_trending.py       # GitHub Trending 抓取模块
-├── summarizer.py            # OpenAI 兼容文章摘要模块
-├── notifier.py              # PushPlus 微信推送模块
-├── news_agent.py            # 主程序入口（编排所有模块）
-├── test_hn_fetcher.py       # HN 抓取模块单元测试
-├── requirements.txt         # Python 依赖列表
-├── .env.example             # 环境变量示例
-├── CLAUDE.md                # Claude Code 项目说明
-└── README.md                # 本文件
-```
-
-## ❓ 常见问题
-
-### Q: 收不到微信推送怎么办？
-
-**A:** 请按以下步骤排查：
-
-1. 检查 GitHub Actions 是否运行成功（查看 Actions 标签页）
-2. 确认 `PUSHPLUS_TOKEN` 配置正确
-3. 登录 [PushPlus](http://www.pushplus.plus/) 确认发送记录
-4. 确认已关注 PushPlus 公众号
-
-### Q: 可以修改推送时间吗？
-
-**A:** 可以。编辑 `.github/workflows/daily_run.yml`，修改 `cron` 字段：
-
-```yaml
-schedule:
-  - cron: '0 22 * * *'  # UTC 22:00 = 北京 06:00
-```
-
-### Q: 可以抓取更多文章吗？
-
-**A:** 可以，不用改代码。到 `Settings` → `Secrets and variables` → `Actions` → `Variables` 设置：
-
-- `HN_TOP_COUNT`（默认 15）
-- `GH_TOP_COUNT`（默认 20；注入为环境变量 `GITHUB_TOP_COUNT`。注意：仓库 Variable 名不能以 `GITHUB_` 开头）
-
-⚠️ **注意**：增加数量会消耗更多 LLM API 额度，也可能导致推送超时。
-
-### Q: 可以自定义 AI 总结提示词吗？
-
-**A:** 可以，不用改代码。新增 Actions Variable：
-
-- `SUMMARY_PROMPT_TEMPLATE`
-
-模板中必须包含 `{title}` 和 `{content}`，系统会把文章标题和正文自动填入。
-
-可选模板见：[`SUMMARY_PROMPT_TEMPLATES.md`](./SUMMARY_PROMPT_TEMPLATES.md)。
-
-### Q: 如何切换其他 OpenAI 兼容接口？
-
-**A:** 无需改代码，只改环境变量 / GitHub 配置即可：
-
-1. Secrets：`OPENAI_API_KEY` = 你的 Key
-2. Variables：`OPENAI_BASE_URL` = 接口地址（如 `https://api.deepseek.com`）
-3. Variables：`MODEL_NAME` = 模型 ID（如 `deepseek-chat` 或 `stepfun-ai/step-3.5-flash`）
-
-### Q: GitHub Actions 失败了怎么办？
-
-**A:** 点击失败的 Run 查看 Logs，常见问题：
-
-- **网络超时**：GitHub Actions 网络不稳定，重试即可
-- **API 错误**：检查 API Key 是否正确、余额是否充足
-- **依赖安装失败**：检查 `requirements.txt` 是否正常
-
-## 🤝 贡献
-
-欢迎提交 Issue 和 Pull Request！
-
-如果你有好的想法或发现了 Bug，请：
-
-1. Fork 本仓库
-2. 创建特性分支 (`git checkout -b feature/AmazingFeature`)
-3. 提交更改 (`git commit -m 'Add some AmazingFeature'`)
-4. 推送到分支 (`git push origin feature/AmazingFeature`)
-5. 开启 Pull Request
-
-## 📄 开源协议
-
-本项目采用 [MIT License](LICENSE) 开源协议。
-
-## 🌟 Star History
-
-如果这个项目对你有帮助，请给一个 Star ⭐️
-
----
-
-<div align="center">
-
-Made with ❤️ by [GeYugong](https://github.com/GeYugong)
-
-</div>
+- **不再使用 PushPlus**：曾因内容超过 2 万字被拒；现改为 Pages 承载完整日报。
+- 自定义摘要提示词：Variable `SUMMARY_PROMPT_TEMPLATE`，必须含 `{title}` 与 `{content}`。模板见 `SUMMARY_PROMPT_TEMPLATES.md`。
