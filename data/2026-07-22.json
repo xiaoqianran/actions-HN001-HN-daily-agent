@@ -1,0 +1,245 @@
+{
+  "date": "2026-07-22",
+  "generated_at": "2026-07-22T22:54:56.334765+00:00",
+  "hn_count": 15,
+  "gh_count": 20,
+  "hn_articles": [
+    {
+      "title": "Medici family mystery may be solved after more than 400 years",
+      "url": "https://www.cnn.com/2026/07/15/science/medici-family-mystery-dna-malaria",
+      "summary": "核心 美第奇家族夫妇400年前神秘死亡，DNA分析证实为疟疾所致。\n要点 从 Francesco 肋骨骨样本中发现疟原虫遗传痕迹；研究终结谋杀 rumors，确认自然死亡；古DNA技术比古免疫学更 definitive。\n亮点 DNA证据确凿，解决400年历史争议。\n适合 生物信息学"
+    },
+    {
+      "title": "Terrence Tao's ChatGPT Conversation about the Jacobian Conjecture Counterexample",
+      "url": "https://chatgpt.com/share/6a5fdc7a-d6f8-83e8-bbea-8deb42cfed56",
+      "summary": "核心 ChatGPT辅助验证雅可比猜想反例的显式构造与等价性\n要点 构造从C^3到代数簇X的显式多项式同构；通过复合映射得到雅可比行列式为-1的Keller映射G；证明G与经典反例F仅差线性坐标变换\n亮点 显式同构消除了原构造中的奇点疑问，并严格证明与经典反例等价\n适合 代数几何研究者"
+    },
+    {
+      "title": "GigaToken: ~1000x faster Language model tokenization",
+      "url": "https://github.com/marcelroed/gigatoken/",
+      "summary": "核心 无法抓取正文，请直接点击链接查看。\n要点 无；无；无\n亮点 无\n适合 通用"
+    },
+    {
+      "title": "Quality non-fiction books are the antithesis of AI slop",
+      "url": "https://resobscura.substack.com/p/quality-non-fiction-books-are-the",
+      "summary": "核心 在AI内容泛滥时代，获奖非虚构书籍是值得主动寻找的宝贵阅读资源。\n要点 图书馆工作经历揭示筛选价值；传统浏览优于网络搜索；创建奖项索引平台助力发现好书。\n亮点 作者自费创建免费平台，聚合获奖非虚构书籍供搜索。\n适合 内容创作者；知识管理爱好者"
+    },
+    {
+      "title": "Malleable Computing, Emacs, and You",
+      "url": "http://yummymelon.com/devnull/malleable-computing-emacs-and-you.html",
+      "summary": "核心 利用Emacs与gh工具链自动化GitHub issue管理，体现可塑性计算。\n要点 以gh命令行工具处理GitHub认证与交互；用Elisp解析JSON并集成Transient/vtable界面；通过ox-gfm与Pandoc实现Org/Markdown互转。\n亮点 核心功能仅用不到20行Elisp代码封装gh命令即完成。\n适合 Emacs用户与开发者"
+    },
+    {
+      "title": "Safari Technology Preview 248 Released",
+      "url": "https://webkit.org/blog/18162/release-notes-for-safari-technology-preview-248/",
+      "summary": "核心 Safari技术预览版248发布，重点修复CSS与可访问性问题并新增CSS特性。\n要点 CSS新增progress()函数no-clamp选项；修复VoiceOver导航与aria-labelledby动态更新问题；修复HDR图像解码导致的颜色偏差与亮度问题。\n亮点 CSS progress()函数支持no-clamp选项，增强动画控制。\n适合 前端工程师与Web开发者"
+    },
+    {
+      "title": "Are AI Labs Pelicanmaxxing?",
+      "url": "https://dylancastillo.co/posts/pelicanmaxxing.html",
+      "summary": "核心 实验验证AI实验室未在pelican骑自行车基准上专门优化。\n要点 Simon Willison的pelican骑自行车基准广受关注；实验测试7个前沿模型生成1008个SVG并评判；pelican动物评分排名第6，无过拟合证据。\n亮点 量化分析未发现AI实验室在pelican基准上过拟合。\n适合 AI研究人员与开发者"
+    },
+    {
+      "title": "Show HN: Bento - An entire PowerPoint in one HTML file (edit+view+data+collab)",
+      "url": "https://bento.page/slides/",
+      "summary": "核心 单文件交付：整个PPT（编辑/查看/数据/协作）封装在一个HTML文件中。\n要点 单文件包含演示、查看器与编辑器，支持自保存；具备原生过渡动画与实时数据图表；无安装无服务器，文件永久可用。\n亮点 单文件自包含，永久可用，无需担心软件过期。\n适合 前端开发者与产品经理"
+    },
+    {
+      "title": "John C. Dvorak has died",
+      "url": "https://twitter.com/na_announce/status/2079952538040672302",
+      "summary": "核心 John C. Dvorak去世，享年74岁，系No Agenda Show主持人。\n要点 官方账号宣布其去世消息；身份为丈夫、父亲及节目主持人；后续将有更多信息发布。\n亮点 无\n适合 科技播客听众"
+    },
+    {
+      "title": "Everyone Should Know SIMD",
+      "url": "https://mitchellh.com/writing/everyone-should-know-simd",
+      "summary": "核心 SIMD并行计算技术简单通用，所有开发者都应掌握其基础模式。\n要点 将循环分解为广播常量；向量化处理；处理剩余元素三步。\n亮点 打破SIMD复杂难学的刻板印象，展示通用实现模式。\n适合 全栈开发者"
+    },
+    {
+      "title": "Nobody knows what a used GPU cluster is worth",
+      "url": "https://ciphertalk.substack.com/p/nobody-knows-what-a-used-gpu-cluster",
+      "summary": "核心 GPU集群作为债务抵押品时，其动态运营状态与团队隐性知识难以估值，形成系统性风险。\n要点 GPU集群价值依赖实时配置、性能与运维团队，这些不在资产负债表上；大规模集群GPU年故障率约9%，日常故障频发；运维团队对硬件 quirks 的熟悉度是核心资产，无法被贷款方直接获取。\n亮点 GPU集群日常故障是常态，年故障率约9%，运维团队隐性知识才是真正资产。\n适合 AI基建与硬件运维人员"
+    },
+    {
+      "title": "Any text-to-SQL benchmark should address difficulties of real-world data stores",
+      "url": "https://cacm.acm.org/blogcacm/if-you-think-you-can-do-real-world-text-to-sql/",
+      "summary": "核心 现有文本转SQL基准测试未能反映真实数据仓库的复杂性。\n要点 基准数据公开导致LLM数据泄露；真实仓库存在模式腐烂与专有信息；真实查询连接更复杂。\n亮点 Beaver Benchmark基于MIT与Oracle真实负载构建。\n适合 AI与数据工程师"
+    },
+    {
+      "title": "Show HN: Cactus Hybrid: We taught Gemma 4 to know when it's wrong",
+      "url": "https://github.com/cactus-compute/cactus-hybrid",
+      "summary": "核心 无法抓取正文，请直接点击链接查看。\n要点 无；无；无\n亮点 无\n适合 通用"
+    },
+    {
+      "title": "Making",
+      "url": "https://beej.us/blog/data/ai-making/",
+      "summary": "核心 探讨AI时代开发者“亲手制作”的乐趣丧失与替代性满足感\n要点 AI导致手工编码技艺与低层问题解决乐趣流失；作者严格区分“自制”与“委托制作”的满足感差异；通过木工、写作等多元实践重新定义创作价值\n亮点 满足感源于亲手制作过程，而非仅拥有成果\n适合 全栈与AI工程师"
+    },
+    {
+      "title": "Fairphone 6 wide camera experimental Linux support",
+      "url": "https://nondescriptpointer.com/articles/fairphone-6-wide-camera-linux/",
+      "summary": "核心 Fairphone 6超广角相机在Linux上获得实验性支持。\n要点 复用现有OV13B10传感器驱动；分析硬件复用TFE530等驱动；完成内核移植与libcamera配置。\n亮点 已实现QR扫描功能。\n适合 嵌入式/Linux驱动工程师"
+    }
+  ],
+  "gh_repos": [
+    {
+      "name": "block/buzz",
+      "url": "https://github.com/block/buzz",
+      "description": "[block/buzz] 蜂巢思维通信平台",
+      "stars": 8,
+      "language": "Rust",
+      "description_original": "A hive mind communication platform"
+    },
+    {
+      "name": "MadsLorentzen/ai-job-search",
+      "url": "https://github.com/MadsLorentzen/ai-job-search",
+      "description": "[MadsLorentzen/ai-job-search] 基于 Claude Code 的 AI 驱动求职框架。克隆、填写个人资料，让 Claude 评估职位、定制简历、撰写求职信并准备面试。",
+      "stars": 5,
+      "language": "TypeScript",
+      "description_original": "AI-powered job application framework built on Claude Code. Fork it, fill in your profile, and let Claude evaluate jobs, tailor CVs, write cover letters, and prepare you for interviews."
+    },
+    {
+      "name": "jamiepine/voicebox",
+      "url": "https://github.com/jamiepine/voicebox",
+      "description": "[jamiepine/voicebox] 开源 AI 语音工作室。克隆、口述、创作。",
+      "stars": 5,
+      "language": "TypeScript",
+      "description_original": "The open-source AI voice studio. Clone, dictate, create."
+    },
+    {
+      "name": "tirth8205/code-review-graph",
+      "url": "https://github.com/tirth8205/code-review-graph",
+      "description": "[tirth8205/code-review-graph] 面向 MCP 和 CLI 的本地优先代码智能图谱。为你的代码库构建持久地图，使 AI 编码工具仅读取关键内容，在代码审查和大仓库工作流中实现显著的上下文缩减。",
+      "stars": 4,
+      "language": "Python",
+      "description_original": "Local-first code intelligence graph for MCP and CLI. Builds a persistent map of your codebase so AI coding tools read only what matters, with benchmarked context reductions on reviews and large-repo workflows."
+    },
+    {
+      "name": "diegosouzapw/OmniRoute",
+      "url": "https://github.com/diegosouzapw/OmniRoute",
+      "description": "[diegosouzapw/OmniRoute] 永不停歇地编码。免费 AI 网关：一个端点，160+ 提供商（50+ 免费），连接 Claude Code、Codex、Cursor、Cline 和 Copilot 至免费的 Claude/GPT/Gemini。RTK+Caveman 堆叠压缩节省 15-95% token，智能自动回退，支持 MCP/A2A、多模态 API、桌面/PWA。",
+      "stars": 3,
+      "language": "TypeScript",
+      "description_original": "Never stop coding. Free AI gateway: one endpoint, 160+ providers (50+ free), connect Claude Code, Codex, Cursor, Cline & Copilot to FREE Claude/GPT/Gemini. RTK+Caveman stacked compression saves 15-95% tokens, smart auto-fallback, MCP/A2A, multimodal APIs, Desktop/PWA."
+    },
+    {
+      "name": "calesthio/OpenMontage",
+      "url": "https://github.com/calesthio/OpenMontage",
+      "description": "[calesthio/OpenMontage] 全球首个开源、智能视频制作系统。12 条流水线，52 个工具，500+ 智能体技能。将你的 AI 编码助手变为全功能视频制作工作室。",
+      "stars": 4,
+      "language": "Python",
+      "description_original": "World's first open-source, agentic video production system. 12 pipelines, 52 tools, 500+ agent skills. Turn your AI coding assistant into a full video production studio."
+    },
+    {
+      "name": "facebook/astryx",
+      "url": "https://github.com/facebook/astryx",
+      "description": "[facebook/astryx] 一个完全可定制且为智能体准备就绪的开源设计系统",
+      "stars": 3,
+      "language": "TypeScript",
+      "description_original": "An open source design system that's fully customizable and agent ready"
+    },
+    {
+      "name": "rohitg00/ai-engineering-from-scratch",
+      "url": "https://github.com/rohitg00/ai-engineering-from-scratch",
+      "description": "[rohitg00/ai-engineering-from-scratch] 学习它。构建它。为他人交付它。",
+      "stars": 3,
+      "language": "Python",
+      "description_original": "Learn it. Build it. Ship it for others."
+    },
+    {
+      "name": "microsoft/SkillOpt",
+      "url": "https://github.com/microsoft/SkillOpt",
+      "description": "[microsoft/SkillOpt] SkillOpt 是一个文本空间优化器，通过轨迹驱动编辑、验证门控更新和可部署的 best_skill.md 制品，为冻结的 LLM 智能体训练可复用的自然语言技能。",
+      "stars": 4,
+      "language": "Python",
+      "description_original": "SkillOpt is a text-space optimizer that trains reusable natural-language skills for frozen LLM agents through trajectory-driven edits, validation-gated updates, and deployable best_skill.md artifacts."
+    },
+    {
+      "name": "browser-use/video-use",
+      "url": "https://github.com/browser-use/video-use",
+      "description": "[browser-use/video-use] 用编码代理编辑视频",
+      "stars": 2,
+      "language": "Python",
+      "description_original": "Edit videos with coding agents"
+    },
+    {
+      "name": "stablyai/orca",
+      "url": "https://github.com/stablyai/orca",
+      "description": "stablyai/orca：Orca 是用于管理并行代理 fleet 的 ADE。可使用自有订阅运行任意编码代理，支持桌面与移动端。",
+      "stars": 3,
+      "language": "TypeScript",
+      "description_original": "Orca is the ADE for working with a fleet of parallel agents. Run any coding agent with your own subscription. Available on desktop and mobile."
+    },
+    {
+      "name": "JCodesMore/ai-website-cloner-template",
+      "url": "https://github.com/JCodesMore/ai-website-cloner-template",
+      "description": "JCodesMore/ai-website-cloner-template：使用 AI 编码代理，一键克隆任意网站。",
+      "stars": 2,
+      "language": "TypeScript",
+      "description_original": "Clone any website with one command using AI coding agents"
+    },
+    {
+      "name": "worldwonderer/oh-story-claudecode",
+      "url": "https://github.com/worldwonderer/oh-story-claudecode",
+      "description": "网文/小说写作 skill 包，覆盖长篇与短篇网络小说的扫榜、拆文、写作、去AI味、封面图全流程",
+      "stars": 2,
+      "language": "JavaScript",
+      "description_original": "网文/小说写作 skill 包，覆盖长篇与短篇网络小说的扫榜、拆文、写作、去AI味、封面图全流程"
+    },
+    {
+      "name": "1jehuang/jcode",
+      "url": "https://github.com/1jehuang/jcode",
+      "description": "1jehuang/jcode：最智能的代码代理工具 harness。",
+      "stars": 2,
+      "language": "Rust",
+      "description_original": "The most intelligent agent harness for code"
+    },
+    {
+      "name": "earthtojake/text-to-cad",
+      "url": "https://github.com/earthtojake/text-to-cad",
+      "description": "earthtojake/text-to-cad：面向 CAD、机器人及硬件设计的代理技能集合。",
+      "stars": 2,
+      "language": "JavaScript",
+      "description_original": "A collection of agent skills for CAD, robotics and hardware design"
+    },
+    {
+      "name": "lidge-jun/opencodex",
+      "url": "https://github.com/lidge-jun/opencodex",
+      "description": "lidg e-jun/opencodex：OpenAI Codex 与 Claude Code 的通用提供商代理 — 可在 Codex CLI、App、SDK 及 Claude Code 中使用任意 LLM（Claude、Gemini、Grok、DeepSeek、Ollama 等）。",
+      "stars": 2,
+      "language": "TypeScript",
+      "description_original": "Universal provider proxy for OpenAI Codex & Claude Code — use any LLM (Claude, Gemini, Grok, DeepSeek, Ollama…) with Codex CLI, App, SDK, and Claude Code"
+    },
+    {
+      "name": "every-app/open-seo",
+      "url": "https://github.com/every-app/open-seo",
+      "description": "every-app/open-seo：Semrush 与 Ahrefs 的开源替代方案。",
+      "stars": 2,
+      "language": "TypeScript",
+      "description_original": "Open source alternative to Semrush and Ahrefs"
+    },
+    {
+      "name": "hoainho/img2threejs",
+      "url": "https://github.com/hoainho/img2threejs",
+      "description": "hoainho/img2threejs：将参考图像中的对象重建为纯代码、程序化、质量受控、就绪动画的 Three.js 模型。实现令牌高效的图像转 3D。",
+      "stars": 2,
+      "language": "Python",
+      "description_original": "Rebuild the object in a reference image as a code-only, procedural, quality-gated, animation-ready Three.js model. Token-efficient image-to-3D."
+    },
+    {
+      "name": "AgriciDaniel/claude-seo",
+      "url": "https://github.com/AgriciDaniel/claude-seo",
+      "description": "AgriciDaniel/claude-seo：Claude Code 的通用 SEO 技能。包含 25 项子技能与 18 个子代理，涵盖技术 SEO、E-E-A-T、结构化数据、GEO/AEO、外链、本地 SEO、地图智能、语义聚类、电商 SEO、国际 SEO、Google API 及 PDF/Excel 报告。可选集成 DataForSEO、Firecra。",
+      "stars": 2,
+      "language": "Python",
+      "description_original": "Universal SEO skill for Claude Code. 25 sub-skills + 18 sub-agents covering technical SEO, E-E-A-T, schema, GEO/AEO, backlinks, local SEO, maps intelligence, semantic clustering, e-commerce SEO, international SEO, Google APIs, and PDF/Excel reporting. Optional DataForSEO, Firecrawl, and Banana extensions."
+    },
+    {
+      "name": "GoogleCloudPlatform/knowledge-catalog",
+      "url": "https://github.com/GoogleCloudPlatform/knowledge-catalog",
+      "description": "GoogleCloudPlatform/knowledge-catalog：Google Cloud Knowledge Catalog 的工具与示例。",
+      "stars": 2,
+      "language": "HTML",
+      "description_original": "Google Cloud Knowledge Catalog Tools and Samples"
+    }
+  ]
+}
