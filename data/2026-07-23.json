@@ -1,0 +1,235 @@
+{
+  "date": "2026-07-23",
+  "generated_at": "2026-07-23T22:49:15.274951+00:00",
+  "hn_count": 13,
+  "gh_count": 20,
+  "hn_articles": [
+    {
+      "title": "Couple pay >$800k for a gene-editing therapy for their daughter. She died.",
+      "url": "https://www.science.org/content/article/exclusive-death-girl-chinese-gene-editing-trial-was-never-made-public",
+      "summary": "核心 中国夫妇斥资86万美元为女儿进行脑部基因编辑试验，女孩治疗后死亡。\n要点 上海新华医院开展全球首个脑部基因编辑临床试验；岁女孩接受治疗后7天死于严重免疫反应；试验未获国家批准，医院受罚但研究者未被公开追责。\n亮点 事件被隐瞒一年多，未公开报道，凸显监管漏洞。\n适合 生物技术；医学伦理；监管政策"
+    },
+    {
+      "title": "Writing by hand is good for your brain",
+      "url": "https://nealstephenson.substack.com/p/writing-by-hand-is-good-for-your",
+      "summary": "核心 手写能激活更多脑区，促进认知与动作协调整合。\n要点 手写需协调手部精细动作与抽象思维；钢笔比铅笔更省力因摩擦力适中；长期正确手写不会导致手部劳损。\n亮点 《巴洛克周期》手稿高达42英寸。\n适合 教育/认知科学/写作工具爱好者"
+    },
+    {
+      "title": "The Beam Engine",
+      "url": "https://glinscott.github.io/beam-engine/",
+      "summary": "核心 蒸汽机利用蒸汽膨胀与大气压差驱动活塞，为工业革命提供核心动力。\n要点 蒸汽加热后体积膨胀1700倍产生压力；活塞面积越大相同压力下输出力越大；通过冷凝蒸汽制造真空利用大气压驱动。\n亮点 蒸汽体积可膨胀至原水的1700倍。\n适合 科技爱好者；工业历史研究者"
+    },
+    {
+      "title": "What happened to TheNumbers.com",
+      "url": "https://stephenfollows.com/p/what-just-happened-to-thenumberscom-should-worry-us-all",
+      "summary": "核心 权威电影数据网站遭AI爬虫攻击致服务中断，暴露互联网基础设施风险\n要点 电影行业权威数据源突然下线超一周；仅部分恢复且历史数据丢失；AI爬虫激增导致服务器不堪重负\n亮点 近30年电影行业一手财务数据永久丢失\n适合 数据安全/网站运营/AI伦理关注者"
+    },
+    {
+      "title": "Startup founders urge U.S. government not to shut off Chinese open weight AI",
+      "url": "https://www.politico.com/news/2026/07/22/startup-founders-urge-trump-not-to-shut-off-chinese-open-weight-ai-01008992",
+      "summary": "核心 美国初创公司创始人联名致信特朗普政府，反对切断中国开源AI模型访问\n要点 担忧政策损害美国AI创新力；中国开源权重AI被全球广泛使用；呼吁保持技术开放合作\n亮点 凸显开源生态对AI进步的关键作用，政策应避免割裂全球创新\n适合 AI政策/科技创业/地缘科技关注者"
+    },
+    {
+      "title": "Building on ATProto",
+      "url": "https://lukekanies.com/writing/building-on-atproto/",
+      "summary": "核心 作者期望ATProto成为公共标准但失望；其理想是构建用户可控的评论应用套件。\n要点 目标是用本地优先数据模型替代Yelp等；ATProto未能有效区分公开与私密数据；认为其正偏离成为开放应用基础的方向。\n亮点 作者基于构建需求指出ATProto公私数据模型设计不足。\n适合 后端/全栈开发者"
+    },
+    {
+      "title": "Software rendering in 500 lines of bare C++",
+      "url": "https://haqr.eu/tinyrenderer/",
+      "summary": "核心 用500行裸C++从零实现软件渲染器教学项目。\n要点 教学导向，旨在理解图形API原理；代码精简，学生10-20小时可完成；从设置像素开始，手动实现基础图形功能。\n亮点 强调理解图形API底层原理，而非GPU编程。\n适合 图形学初学者/进阶开发者"
+    },
+    {
+      "title": "Learn OpenGL, extensive tutorial resource for learning Modern OpenGL",
+      "url": "https://learnopengl.com/",
+      "summary": "核心 免费系统学习现代OpenGL的在线教程与书籍\n要点 专注现代OpenGL核心配置；从基础到高级渐进教学；提供免费在线版印刷版及PDF\n亮点 内容完全免费且持续更新7年\n适合 图形编程初学者与进阶者"
+    },
+    {
+      "title": "A solid-state “atomic channel” for separating rare earth elements",
+      "url": "https://pme.uchicago.edu/news-events/news/cleaner-route-purifying-rare-earth-elements",
+      "summary": "核心 研究团队开发出基于锰氧化物“原子通道”的水相电化学新法，更环保分离稀土元素。\n要点 利用稀土离子水合壳层尺寸差异实现分离；过程用水且无需有机溶剂；通过电流与镁离子微调分离相似元素。\n亮点 首次利用电化学插层与结构特性分离化学性质极相似的镧系元素。\n适合 材料/化工/环境领域研发人员"
+    },
+    {
+      "title": "Show HN: Palmier Pro – Open-source macOS video editor built for AI",
+      "url": "https://github.com/palmier-io/palmier-pro",
+      "summary": "核心 无法抓取正文，请直接点击链接查看。\n要点 无；无；无\n亮点 无\n适合 通用"
+    },
+    {
+      "title": "Astronomers may have found the first exomoon",
+      "url": "https://www.eso.org/public/news/eso2610/",
+      "summary": "核心 天文学家可能发现首个围绕棕矮星的系外卫星，挑战传统宇宙标签。\n要点 使用ESO VLT望远镜通过径向速度法检测棕矮星摆动；发现对象质量至少如木星，棕矮星质量超木星30倍；首次可信检测到系外卫星，引发分类争议。\n亮点 突破性首次可信检测到系外卫星。\n适合 天文科技爱好者"
+    },
+    {
+      "title": "DARPA, U.S. Air Force fly AI-controlled F-16",
+      "url": "https://www.darpa.mil/news/2026/darpa-us-air-force-fly-ai-controlled-f-16",
+      "summary": "核心 DARPA与美国空军成功测试AI控制的标准F-16战机。\n要点 VENOM项目将F-16改装为自主飞行测试平台；飞行员可一键切换AI与人工控制；后续AIR项目将测试多AI代理协同。\n亮点 改装不改变战机核心软件，实现快速空战AI开发。\n适合 AI与军事科技工程师"
+    },
+    {
+      "title": "Converting Files into Minecraft Worlds",
+      "url": "https://wuemeli.com/blog/sulfur-part-1/",
+      "summary": "核心 将任意文件转换为Minecraft世界，通过字节映射方块实现数据可视化。\n要点 构建256方块调色板并过滤有状态方块；设计坐标算法填充区块列和区域文件；使用Rust实现并学习3D几何。\n亮点 创新地将文件数据映射为可探索的Minecraft世界。\n适合 后端与游戏开发工程师"
+    }
+  ],
+  "gh_repos": [
+    {
+      "name": "baidu/Unlimited-OCR",
+      "url": "https://github.com/baidu/Unlimited-OCR",
+      "description": "[baidu/Unlimited-OCR] 无限OCR工作流：欢迎进入一次性长时解析时代。",
+      "stars": 16,
+      "language": "Python",
+      "description_original": "Unlimited OCR Works: Welcome the Era of One-shot Long-horizon Parsing."
+    },
+    {
+      "name": "diegosouzapw/OmniRoute",
+      "url": "https://github.com/diegosouzapw/OmniRoute",
+      "description": "[diegosouzapw/OmniRoute] 永不停歇的编码。免费AI网关：单一端点支持160+提供商（50+免费），连接Claude Code、Codex、Cursor、Cline与Copilot至免费Claude/GPT/Gemini。RTK+Caveman堆叠压缩节省15-95% token，智能自动回退，支持MCP/A2A、多模态API及桌面/PWA。",
+      "stars": 13,
+      "language": "TypeScript",
+      "description_original": "Never stop coding. Free AI gateway: one endpoint, 160+ providers (50+ free), connect Claude Code, Codex, Cursor, Cline & Copilot to FREE Claude/GPT/Gemini. RTK+Caveman stacked compression saves 15-95% tokens, smart auto-fallback, MCP/A2A, multimodal APIs, Desktop/PWA."
+    },
+    {
+      "name": "stablyai/orca",
+      "url": "https://github.com/stablyai/orca",
+      "description": "[stablyai/orca] Orca是用于管理并行代理的ADE。使用自有订阅运行任意编码代理，支持桌面与移动端。",
+      "stars": 9,
+      "language": "TypeScript",
+      "description_original": "Orca is the ADE for working with a fleet of parallel agents. Run any coding agent with your own subscription. Available on desktop and mobile."
+    },
+    {
+      "name": "oblien/openship",
+      "url": "https://github.com/oblien/openship",
+      "description": "[oblien/openship] 自托管部署平台",
+      "stars": 9,
+      "language": "TypeScript",
+      "description_original": "Self-hosted deployment platform"
+    },
+    {
+      "name": "rohitg00/ai-engineering-from-scratch",
+      "url": "https://github.com/rohitg00/ai-engineering-from-scratch",
+      "description": "[rohitg00/ai-engineering-from-scratch] 学习它。构建它。为他人交付它。",
+      "stars": 7,
+      "language": "Python",
+      "description_original": "Learn it. Build it. Ship it for others."
+    },
+    {
+      "name": "block/buzz",
+      "url": "https://github.com/block/buzz",
+      "description": "[block/buzz] 蜂巢思维通信平台",
+      "stars": 5,
+      "language": "Rust",
+      "description_original": "A hive mind communication platform"
+    },
+    {
+      "name": "iOfficeAI/OfficeCLI",
+      "url": "https://github.com/iOfficeAI/OfficeCLI",
+      "description": "[iOfficeAI/OfficeCLI] OfficeCLI是首个专为AI代理打造的Office套件，可读写自动化Word、Excel与PowerPoint文件。免费、开源、单二进制文件，无需安装Office。",
+      "stars": 6,
+      "language": "C#",
+      "description_original": "OfficeCLI is the first and best Office suite  purpose-built for AI agents to read, edit, and automate Word, Excel, and PowerPoint files. Free, open-source, single binary, no Office installation required."
+    },
+    {
+      "name": "lidge-jun/opencodex",
+      "url": "https://github.com/lidge-jun/opencodex",
+      "description": "[lidge-jun/opencodex] OpenAI Codex与Claude Code的通用提供商代理——使用任意LLM（Claude、Gemini、Grok、DeepSeek、Ollama…）配合Codex CLI、App、SDK及Claude Code。",
+      "stars": 4,
+      "language": "TypeScript",
+      "description_original": "Universal provider proxy for OpenAI Codex & Claude Code — use any LLM (Claude, Gemini, Grok, DeepSeek, Ollama…) with Codex CLI, App, SDK, and Claude Code"
+    },
+    {
+      "name": "HKUDS/DeepTutor",
+      "url": "https://github.com/HKUDS/DeepTutor",
+      "description": "[HKUDS/DeepTutor] DeepTutor：终身个性化辅导。https://deeptutor.info/。",
+      "stars": 3,
+      "language": "Python",
+      "description_original": "DeepTutor: Lifelong Personalized Tutoring. https://deeptutor.info/."
+    },
+    {
+      "name": "HKUDS/Vibe-Trading",
+      "url": "https://github.com/HKUDS/Vibe-Trading",
+      "description": "[HKUDS/Vibe-Trading] Vibe-Trading：你的个人交易代理。",
+      "stars": 3,
+      "language": "Python",
+      "description_original": "\"Vibe-Trading: Your Personal Trading Agent\""
+    },
+    {
+      "name": "tonhowtf/omniget",
+      "url": "https://github.com/tonhowtf/omniget",
+      "description": "[tonhowtf/omniget] 开源桌面应用，用于下载、整理和学习媒体。原生跨平台（Tauri + Rust + Svelte）。PDF/EPUB阅读器具备专注模式、时间戳笔记和间隔重复功能。通过 yt-dlp 支持媒体下载（1,800+ 站点）。可扩展的插件系统。",
+      "stars": 3,
+      "language": "Rust",
+      "description_original": "Open-source desktop app for downloading, organizing and studying media. Native cross-platform (Tauri + Rust + Svelte). PDF/EPUB reader with focus mode, timestamped notes and spaced repetition. Media downloads via yt-dlp (1.800+ sites). Extensible plugin system."
+    },
+    {
+      "name": "can1357/oh-my-pi",
+      "url": "https://github.com/can1357/oh-my-pi",
+      "description": "[can1357/oh-my-pi] ⌥ 终端 AI 编码代理 — 支持哈希锚定编辑、优化工具 harness、LSP、Python、浏览器、子代理等。",
+      "stars": 3,
+      "language": "TypeScript",
+      "description_original": "⌥  AI Coding agent for the terminal — hash-anchored edits, optimized tool harness, LSP, Python, browser, subagents, and more"
+    },
+    {
+      "name": "stackryze/FreeDomains",
+      "url": "https://github.com/stackryze/FreeDomains",
+      "description": "[stackryze/FreeDomains] Stackryze Domains：人人可用的免费域名，立即申领你的专属域名。",
+      "stars": 3,
+      "language": "JavaScript",
+      "description_original": "Stackryze Domains: Free Domain for Everyone, Claim yours today."
+    },
+    {
+      "name": "tirth8205/code-review-graph",
+      "url": "https://github.com/tirth8205/code-review-graph",
+      "description": "[tirth8205/code-review-graph] 本地优先的代码智能图谱，适用于 MCP 和 CLI。为你的代码库构建持久映射，使 AI 编码工具仅读取关键内容，在代码审查和大仓库工作流中实现显著的上下文缩减。",
+      "stars": 4,
+      "language": "Python",
+      "description_original": "Local-first code intelligence graph for MCP and CLI. Builds a persistent map of your codebase so AI coding tools read only what matters, with benchmarked context reductions on reviews and large-repo workflows."
+    },
+    {
+      "name": "hoainho/img2threejs",
+      "url": "https://github.com/hoainho/img2threejs",
+      "description": "[hoainho/img2threejs] 将参考图像中的物体重建为纯代码、程序化、质量受控、动画就绪的 Three.js 模型。实现高效的图像转 3D。",
+      "stars": 3,
+      "language": "Python",
+      "description_original": "Rebuild the object in a reference image as a code-only, procedural, quality-gated, animation-ready Three.js model. Token-efficient image-to-3D."
+    },
+    {
+      "name": "JCodesMore/ai-website-cloner-template",
+      "url": "https://github.com/JCodesMore/ai-website-cloner-template",
+      "description": "[JCodesMore/ai-website-cloner-template] 使用 AI 编码代理一键克隆任意网站。",
+      "stars": 3,
+      "language": "TypeScript",
+      "description_original": "Clone any website with one command using AI coding agents"
+    },
+    {
+      "name": "JustVugg/colibri",
+      "url": "https://github.com/JustVugg/colibri",
+      "description": "[JustVugg/colibri] 在 25GB 内存的消费级机器上运行 GLM-5.2（744B MoE）— 纯 C 语言，零依赖，专家从磁盘流式传输。小巧引擎，庞大模型。🐦",
+      "stars": 2,
+      "language": "C",
+      "description_original": "Run GLM-5.2 (744B MoE) on a 25GB-RAM consumer machine — pure C, zero deps, experts streamed from disk. Tiny engine, immense model. 🐦"
+    },
+    {
+      "name": "vercel-labs/agent-skills",
+      "url": "https://github.com/vercel-labs/agent-skills",
+      "description": "[vercel-labs/agent-skills] Vercel 官方的代理技能集合。",
+      "stars": 3,
+      "language": "JavaScript",
+      "description_original": "Vercel's official collection of agent skills"
+    },
+    {
+      "name": "ogulcancelik/herdr",
+      "url": "https://github.com/ogulcancelik/herdr",
+      "description": "[ogulcancelik/herdr] 驻留在终端中的代理复用器。",
+      "stars": 2,
+      "language": "Rust",
+      "description_original": "agent multiplexer that lives in your terminal."
+    },
+    {
+      "name": "jamiepine/voicebox",
+      "url": "https://github.com/jamiepine/voicebox",
+      "description": "[jamiepine/voicebox] 开源 AI 语音工作室。克隆、口述、创作。",
+      "stars": 2,
+      "language": "TypeScript",
+      "description_original": "The open-source AI voice studio. Clone, dictate, create."
+    }
+  ]
+}
